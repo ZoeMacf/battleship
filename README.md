@@ -25,7 +25,11 @@
 
 ### Initial Discussion
 
-#### User Stories
+This program will replicate the classic strategy game Battleship by allowing the user to try and guess the locations of the computer's ships and take them out. 
+
+#### User Goals
+ - I want the user to be able to easily play a game of Battleship by guessing the location of the various boats. 
+ - I want the rules to be easily accessible for first time players. 
 
 ## Features
 
