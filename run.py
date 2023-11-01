@@ -40,13 +40,16 @@ def display_game_board():
     and will then prompt the user to make their first choice
     """
     # Creates five instances of game_board and populates the list with 'O' five times to represent spaces for ships.
-    for x in range(10):
-        game_board.append(['O'] * 10)
+    for x in range(8):
+        game_board.append(['O'] * 8)
+    
+    # Creates a grid for the game_board using join to print row headers and the zip function to pair letters with each row.
+    #https://stackoverflow.com/questions/53446425/creating-a-row-of-numbers-letters-in-my-python-battleship-game
+    print(" ", " ".join("12345678"))
+    for letter, row in zip("ABCDEFGH", game_board):
+        print(letter, " ".join(row))
         
-    print('    A    B    C    D    E    F    G    H    I    J')
-    print(' --------------------------------------------------')
-    # Will print the game_board in a more readable way but also to create a grid effect
-    pprint(game_board)
+    
 
 def display_rules():
     """
