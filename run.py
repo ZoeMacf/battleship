@@ -27,6 +27,8 @@ def start_screen():
     
     if menu_choice == '1':
         display_game_board()
+    elif menu_choice == '2':
+        display_rules()
     else:
         print("Please choose something else")
     
@@ -44,7 +46,28 @@ def display_game_board():
     ]
     
     pprint(game_board)
-        
+
+def display_rules():
+    """
+    Displays the game rules to user.
+    """       
+    
+    print("Your goal is to try and sink all of your opponents ships before they sink yours\n")
+    print("The ships are all different sizes and will be placed around the grid\n")
+    print("You must use column and row numbers only to make your guess\n")
+    print("If your guess is correct 'HIT' will be displayed to the screen\n")
+    print("if not then 'MISS' will be displayed\n")
+    
+    print("Can you sink all the ships before your opponent?\n")
+    
+    main_menu = input("Type 'return' to go back to the main menu\n")
+    
+    if main_menu == 'return':
+        start_screen()
+    else:
+        print("Error: Please type 'return' to go back to the main menu")
+    
+    
     
 def main():
     """
