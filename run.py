@@ -31,20 +31,21 @@ def start_screen():
         display_rules()
     else:
         print("Please choose something else")
+        
+game_board = []
     
 def display_game_board():
     """
     Generates a game board for the user
     and will then prompt the user to make their first choice
     """
-    game_board = [
-        ['', '', '', '', '',],
-        ['', '', '', '', '',],
-        ['', '', '', '', '',],
-        ['', '', '', '', '',],
-        ['', '', '', '', '',]
-    ]
-    
+    # Creates five instances of game_board and populates the list with 'O' five times to represent spaces for ships.
+    for x in range(10):
+        game_board.append(['O'] * 10)
+        
+    print('    A    B    C    D    E    F    G    H    I    J')
+    print(' --------------------------------------------------')
+    # Will print the game_board in a more readable way but also to create a grid effect
     pprint(game_board)
 
 def display_rules():
