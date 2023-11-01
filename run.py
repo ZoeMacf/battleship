@@ -1,4 +1,4 @@
-from pprint import pprint
+from random import randint
 
 def start_screen():
     """Prints welcome screen with ASCII art and menu page"""
@@ -40,8 +40,6 @@ def start_screen():
         display_rules()
     else:
         print("Please choose something else")
-        
-game_board = []
     
 def display_game_board():
     """
