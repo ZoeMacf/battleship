@@ -1,4 +1,5 @@
 from random import randint
+from pprint import pprint
 
 game_board = []
 
@@ -86,14 +87,13 @@ def create_battleships(game_board):
     for x in range(5):
         battleship_row = randint(0,7)
         battleship_col = randint(0,7)
-        game_board[battleship_row] = 'X'
-        game_board[battleship_col] = 'X'
+        game_board[battleship_row][battleship_col] = "S"
 
 def guess_ship_location():
     """
-    Allows the user to guess the location of the ships and returns the guess. 
-    """
-    
+    Allows the user to guess the location of the ships and returns the guess.
+    """ 
+    pass
 
 def hit_count():
     """
@@ -119,7 +119,7 @@ def main():
     else:
         print("Please choose something else")
     
-    create_battleships(game_board)
+    create_battleships(SHIP_LOCATION)
     
     
 main()
