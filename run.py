@@ -42,15 +42,6 @@ def start_screen():
     print("1. Start Game\n")
     print("2. Rules\n")
     print("3. Exit Game\n")
-    
-    menu_choice = input("Please choose one of the above, using the numbers 1, 2 or 3\n")
-    
-    if menu_choice == '1':
-        display_game_board()
-    elif menu_choice == '2':
-        display_rules()
-    else:
-        print("Please choose something else")
 
 def display_game_board():
     """
@@ -87,14 +78,16 @@ def display_rules():
         start_screen()
     else:
         print("Error: Please type 'return' to go back to the main menu")
-        
-ships= []
 
-def create_battleships():
+def create_battleships(game_board):
     """
-    Will create the ships for the game
+    Will create five ships for the game
     """
-    pass
+    for x in range(5):
+        battleship_row = randint(0,7)
+        battleship_col = randint(0,7)
+        game_board[battleship_row] = 'X'
+        game_board[battleship_col] = 'X'
 
 def set_ship_coordinates():
     """
@@ -118,5 +111,16 @@ def main():
     Run all of the games functions
     """
     start_screen()
+    menu_choice = input("Please choose one of the above, using the numbers 1, 2 or 3\n")
+    
+    if menu_choice == '1':
+        display_game_board()
+    elif menu_choice == '2':
+        display_rules()
+    else:
+        print("Please choose something else")
+    
+    create_battleships(game_board)
+    
     
 main()
