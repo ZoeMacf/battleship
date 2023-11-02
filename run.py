@@ -1,5 +1,16 @@
 from random import randint
 
+game_board = []
+
+#create a dictionary to convert letters to numbers, allowing user to use Int values to guess ship location
+letter_to_number = {'A': 1, 'B': 2, 'C': 3, 'D': 4, 'E': 5, 'F': 6, 'G': 7, 'H': 8}
+
+#Uses list comprehension to create a blank list eight times, this can then be populated by the user's guesses and compared to the ship locations
+USER_GUESS = [[''] * 8 for x in range(8)]
+
+#Uses list comprehension to create a blank list eight times, this can then be populated by the ships locations
+SHIP_LOCATION = [[''] * 8 for x in range(8)]
+
 def start_screen():
     """Prints welcome screen with ASCII art and menu page"""
     
@@ -40,9 +51,7 @@ def start_screen():
         display_rules()
     else:
         print("Please choose something else")
-        
-game_board = []
-    
+
 def display_game_board():
     """
     Generates a game board for the user
@@ -85,7 +94,6 @@ def create_battleships():
     """
     Will create the ships for the game
     """
-    #bypass function for now, placeholder for future function
     pass
 
 def set_ship_coordinates():
