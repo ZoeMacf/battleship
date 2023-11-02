@@ -84,6 +84,9 @@ def create_battleships(game_board):
     """
     Will create five ships for the game
     """
+    # For each of the 5 ships assign a random integer between 1 and 7 to
+    # the grid row and column.
+    # Add this value to the game_board and assign it 'S'
     for x in range(5):
         battleship_row = randint(0,7)
         battleship_col = randint(0,7)
