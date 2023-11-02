@@ -40,6 +40,8 @@ def start_screen():
         display_rules()
     else:
         print("Please choose something else")
+        
+game_board = []
     
 def display_game_board():
     """
@@ -56,7 +58,6 @@ def display_game_board():
     for letter, row in zip("ABCDEFGH", game_board):
         print(letter, " ".join(row))
         
-    
 
 def display_rules():
     """
@@ -77,6 +78,30 @@ def display_rules():
         start_screen()
     else:
         print("Error: Please type 'return' to go back to the main menu")
+        
+ships= []
+
+def create_battleships():
+    """
+    Will create the ships for the game
+    """
+    #bypass function for now, placeholder for future function
+    pass
+
+def set_ship_coordinates():
+    """
+    Sets the locations of the ships on the game board
+    """
+    #bypass function for now, placeholder for future function
+    pass
+
+def hit_count():
+    """
+    Get a count of the ships that have been correctly guessed by the user
+    """
+    #bypass function for now, placeholder for future function
+    pass   
+    
     
     
     
