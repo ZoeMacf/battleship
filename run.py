@@ -89,12 +89,11 @@ def create_battleships(game_board):
         game_board[battleship_row] = 'X'
         game_board[battleship_col] = 'X'
 
-def set_ship_coordinates():
+def guess_ship_location():
     """
-    Sets the locations of the ships on the game board
+    Allows the user to guess the location of the ships and returns the guess. 
     """
-    #bypass function for now, placeholder for future function
-    pass
+    
 
 def hit_count():
     """
