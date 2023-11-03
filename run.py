@@ -1,4 +1,5 @@
 from random import randint
+from pprint import pprint
 
 #create a dictionary to convert letters to numbers, allowing user to use Int values to guess ship location
 letter_to_number = {'A': 1, 'B': 2, 'C': 3, 'D': 4, 'E': 5, 'F': 6, 'G': 7, 'H': 8}
@@ -131,7 +132,9 @@ def main():
         print("Please choose something else")
         
     create_battleships(SHIP_LOCATION)
-    guess_ship_location()
+    user_row, user_col = guess_ship_location()
+    print(user_row, user_col)
+    
     
     
 main()
