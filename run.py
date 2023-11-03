@@ -101,14 +101,11 @@ def guess_ship_location():
     if row_guess not in "12345678":
         print("Sorry, please enter a number from 1-8")
         row_guess = input("Which row do you want to choose? e.g 1-8\n")
-    else:
-        print("Row locked on target\n")
     
     if col_guess not in "ABCDEFGH":
         print("Sorry, please choose a letter from A-H\n")
         col_guess = input("Which column do you want to choose? e.g A-H\n")
-    else:
-        print("Column locked on target\n")
+    
     # Converts the row input to int and minus by 1 as Python uses zero indexing
     # Assigns users column guess to the key pair within letter_to_number dictionary   
     return int(row_guess) -1, letter_to_number[col_guess]
@@ -137,7 +134,7 @@ def main():
         display_rules()
     else:
         print("Please choose something else")
-    
+        
     create_battleships(SHIP_LOCATION)
     guess_ship_location()
     
