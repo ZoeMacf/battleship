@@ -55,8 +55,8 @@ def display_game_board():
     
     # Creates a grid for the game_board using join to print row headers and the zip function to pair letters with each row.
     #https://stackoverflow.com/questions/53446425/creating-a-row-of-numbers-letters-in-my-python-battleship-game
-    print(" ", " ".join("12345678"))
-    for letter, row in zip("ABCDEFGH", game_board):
+    print(" ", " ".join("ABCDEFGH"))
+    for letter, row in zip("12345678", game_board):
         print(letter, " ".join(row))
         
 
@@ -96,7 +96,23 @@ def guess_ship_location():
     """
     Allows the user to guess the location of the ships and returns the guess.
     """ 
-    pass
+    row_guess = input("Which row do you want to choose? e.g 1-8\n")
+    col_guess = input("Which column do you want to choose? e.g A-H\n")
+    if row_guess not in "12345678":
+        print("Sorry, please enter a number from 1-8")
+        row_guess = input("Which row do you want to choose? e.g 1-8\n")
+    else:
+        print("Row locked on target\n")
+    
+    if col_guess not in "ABCDEFGH":
+        print("Sorry, please choose a letter from A-H\n")
+        col_guess = input("Which column do you want to choose? e.g A-H\n")
+    else:
+        print("Column locked on target\n")
+    # Converts the row input to int and minus by 1 as Python uses zero indexing
+    # Assigns users column guess to the key pair within letter_to_number dictionary   
+    return int(row_guess) -1, letter_to_number[col_guess]
+    
 
 def hit_count():
     """
@@ -123,6 +139,7 @@ def main():
         print("Please choose something else")
     
     create_battleships(SHIP_LOCATION)
+    guess_ship_location()
     
     
 main()
