@@ -2,13 +2,13 @@ from random import randint
 from pprint import pprint
 
 #create a dictionary to convert letters to numbers, allowing user to use Int values to guess ship location
-letter_to_number = {'A': 1, 'B': 2, 'C': 3, 'D': 4, 'E': 5, 'F': 6, 'G': 7, 'H': 8}
+letter_to_number = {'A': 1, 'B': 2, 'C': 3, 'D': 4, 'E': 5}
 
 #Uses list comprehension to create a blank list eight times, this can then be populated by the user's guesses and compared to the ship locations
-USER_GUESS = [['O'] * 8 for x in range(8)]
+USER_GUESS = [['O'] * 5 for x in range(5)]
 
 #Uses list comprehension to create a blank list eight times, this can then be populated by the ships locations
-SHIP_LOCATION = [[''] * 8 for x in range(8)]
+SHIP_LOCATION = [[''] * 5 for x in range(5)]
 
 def start_screen():
     """Prints welcome screen with ASCII art and menu page"""
@@ -49,8 +49,8 @@ def display_game_board(game_board):
     """
     # Creates a grid for the game_board using join to print row headers and the zip function to pair letters with each row.
     #https://stackoverflow.com/questions/53446425/creating-a-row-of-numbers-letters-in-my-python-battleship-game
-    print(" ", " ".join("ABCDEFGH"))
-    for letter, row in zip("12345678", game_board):
+    print(" ", " ".join("ABCDE"))
+    for letter, row in zip("12345", game_board):
         print(letter, " ".join(row))
         
 
@@ -82,8 +82,8 @@ def create_battleships(game_board):
     # the grid row and column.
     # Add this value to the game_board and assign it 'S'
     for x in range(5):
-        battleship_row = randint(0,7)
-        battleship_col = randint(0,7)
+        battleship_row = randint(0,4)
+        battleship_col = randint(0,4)
         game_board[battleship_row][battleship_col] = "S"
 
 def guess_ship_location():
@@ -105,7 +105,6 @@ def guess_ship_location():
     # Converts the row input to int and minus by 1 as Python uses zero indexing
     # Assigns users column guess to the key pair within letter_to_number dictionary   
     return int(row_guess) -1, letter_to_number[col_guess]
-    
 
 def hit_count():
     """
@@ -132,8 +131,7 @@ def main():
         print("Please choose something else")
         
     create_battleships(SHIP_LOCATION)
-    user_row, user_col = guess_ship_location()
-    print(user_row, user_col)
+    pprint(SHIP_LOCATION)
     
     
     
