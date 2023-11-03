@@ -90,14 +90,16 @@ def guess_ship_location():
     Allows the user to guess the location of the ships and returns the guess.
     """ 
     row_guess = input("Which row do you want to choose? e.g 1-8\n")
-    col_guess = input("Which column do you want to choose? e.g A-H\n")
+    #Add upper() to input in case user enters input in lowercase
+    col_guess = input("Which column do you want to choose? e.g A-H\n").upper()
     if row_guess not in "12345678":
         print("Sorry, please enter a number from 1-8")
         row_guess = input("Which row do you want to choose? e.g 1-8\n")
     
     if col_guess not in "ABCDEFGH":
         print("Sorry, please choose a letter from A-H\n")
-        col_guess = input("Which column do you want to choose? e.g A-H\n")
+        #Add upper() to input in case user enters input in lowercase
+        col_guess = input("Which column do you want to choose? e.g A-H\n").upper()
     
     # Converts the row input to int and minus by 1 as Python uses zero indexing
     # Assigns users column guess to the key pair within letter_to_number dictionary   
