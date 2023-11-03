@@ -1,13 +1,10 @@
 from random import randint
-from pprint import pprint
-
-game_board = []
 
 #create a dictionary to convert letters to numbers, allowing user to use Int values to guess ship location
 letter_to_number = {'A': 1, 'B': 2, 'C': 3, 'D': 4, 'E': 5, 'F': 6, 'G': 7, 'H': 8}
 
 #Uses list comprehension to create a blank list eight times, this can then be populated by the user's guesses and compared to the ship locations
-USER_GUESS = [[''] * 8 for x in range(8)]
+USER_GUESS = [['O'] * 8 for x in range(8)]
 
 #Uses list comprehension to create a blank list eight times, this can then be populated by the ships locations
 SHIP_LOCATION = [[''] * 8 for x in range(8)]
@@ -44,15 +41,11 @@ def start_screen():
     print("2. Rules\n")
     print("3. Exit Game\n")
 
-def display_game_board():
+def display_game_board(game_board):
     """
     Generates a game board for the user
     and will then prompt the user to make their first choice
     """
-    # Creates five instances of game_board and populates the list with 'O' five times to represent spaces for ships.
-    for x in range(8):
-        game_board.append(['O'] * 8)
-    
     # Creates a grid for the game_board using join to print row headers and the zip function to pair letters with each row.
     #https://stackoverflow.com/questions/53446425/creating-a-row-of-numbers-letters-in-my-python-battleship-game
     print(" ", " ".join("ABCDEFGH"))
@@ -129,7 +122,7 @@ def main():
     menu_choice = input("Please choose one of the above, using the numbers 1, 2 or 3\n")
     
     if menu_choice == '1':
-        display_game_board()
+        display_game_board(USER_GUESS)
     elif menu_choice == '2':
         display_rules()
     else:
