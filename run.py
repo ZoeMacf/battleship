@@ -137,15 +137,18 @@ def guess_ship_location():
         else: 
             print("Miss!")
             user_turn += 1
+    hit_count(user_score)
             
         
 
-def hit_count():
+def hit_count(count):
     """
     Get a count of the ships that have been correctly guessed by the user
     """
-    #bypass function for now, placeholder for future function
-    pass   
+    if count == 5:
+        print("You did it Captain!, we took out all of the ships!\n")
+    else:
+        print("Looks like you lost this round Captain\n")
 
 def begin_game():
     display_game_board(USER_GUESS)
