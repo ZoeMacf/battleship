@@ -13,6 +13,7 @@ SHIP_LOCATION = [[''] * 5 for x in range(5)]
 user_turn = 0
 user_score = 0
 
+#https://stackoverflow.com/questions/517970/how-to-clear-the-interpreter-console
 def cls():
     """
     Sends the command 'cls' to the terminal to clear text
@@ -58,10 +59,19 @@ def start_screen():
     elif menu_choice == '2':
         display_rules()
     elif menu_choice == '3':
-        print('So long captain!..')
-        print('Closing game...')
+        exit_game()
     else:
         print("Please choose something else")
+
+def exit_game():
+    """
+    Will print a goodbye message to the user and clear the screen"
+    """
+    while True:
+        print("So long Captain!..")
+        cls()
+        print("Please click Run Program to run again!")
+        break
 
 def display_game_board(game_board):
     """
@@ -145,7 +155,6 @@ def main():
     Run all of the games functions
     """
     start_screen()
-        
     create_battleships(SHIP_LOCATION)
     guess_ship_location()
     print(user_score)
