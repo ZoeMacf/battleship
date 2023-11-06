@@ -124,8 +124,8 @@ def guess_ship_location():
     global user_turn
     global user_score
     while user_turn < 5:
-        row = int(input("Please enter a row number from 1-5\n"))
-        col = letter_to_number[input("Please enter a column letter from A-E\n").upper()]
+        row = int(input("Please enter a row number from 1-5\n")) - 1
+        col = letter_to_number[input("Please enter a column letter from A-E\n").upper()] - 1
         if SHIP_LOCATION[row][col] == 'S':
             print("HIT")
             SHIP_LOCATION[row][col] = "X"
