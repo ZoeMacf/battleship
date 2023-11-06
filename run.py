@@ -147,18 +147,5 @@ def hit_count():
     #bypass function for now, placeholder for future function
     pass   
     
-    
-    
-    
-def main():
-    """
-    Run all of the games functions
-    """
-    start_screen()
-    create_battleships(SHIP_LOCATION)
-    guess_ship_location()
-    print(user_score)
-    
-    
-    
-main()
+if __name__ == "__main__":
+    start_screen() 
