@@ -10,6 +10,9 @@ USER_GUESS = [['O'] * 5 for x in range(5)]
 #Uses list comprehension to create a blank list eight times, this can then be populated by the ships locations
 SHIP_LOCATION = [[''] * 5 for x in range(5)]
 
+user_turn = 0
+user_score = 0
+
 def start_screen():
     """Prints welcome screen with ASCII art and menu page"""
     
@@ -90,7 +93,8 @@ def guess_ship_location():
     """
     Allows the user to guess the location of the ships and returns the guess.
     """ 
-    user_turn = 0
+    global user_turn
+    global user_score
     while user_turn < 5:
         row = int(input("Please enter a row number from 1-5\n"))
         col = letter_to_number[input("Please enter a column letter from A-E\n").upper()]
@@ -98,6 +102,7 @@ def guess_ship_location():
             print("HIT")
             SHIP_LOCATION[row][col] = "X"
             user_turn += 1
+            user_score += 1
         elif SHIP_LOCATION[row][col] == "X":
             print("Captain, we've already fired there!")
             user_turn += 1
@@ -133,6 +138,7 @@ def main():
         
     create_battleships(SHIP_LOCATION)
     guess_ship_location()
+    print(user_score)
     
     
     
