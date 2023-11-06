@@ -55,7 +55,7 @@ def start_screen():
     menu_choice = input("Please choose one of the above, using the numbers 1, 2 or 3\n")
     
     if menu_choice == '1':
-        display_game_board(USER_GUESS)
+        begin_game()
     elif menu_choice == '2':
         display_rules()
     elif menu_choice == '3':
@@ -146,6 +146,10 @@ def hit_count():
     """
     #bypass function for now, placeholder for future function
     pass   
+
+def begin_game():
+    display_game_board(USER_GUESS)
+    guess_ship_location()
     
 if __name__ == "__main__":
     start_screen() 
