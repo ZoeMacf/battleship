@@ -44,6 +44,18 @@ def start_screen():
     print("1. Start Game\n")
     print("2. Rules\n")
     print("3. Exit Game\n")
+    
+    menu_choice = input("Please choose one of the above, using the numbers 1, 2 or 3\n")
+    
+    if menu_choice == '1':
+        display_game_board(USER_GUESS)
+    elif menu_choice == '2':
+        display_rules()
+    elif menu_choice == '3':
+        print('So long captain!..')
+        print('Closing game...')
+    else:
+        print("Please choose something else")
 
 def display_game_board(game_board):
     """
@@ -127,14 +139,6 @@ def main():
     Run all of the games functions
     """
     start_screen()
-    menu_choice = input("Please choose one of the above, using the numbers 1, 2 or 3\n")
-    
-    if menu_choice == '1':
-        display_game_board(USER_GUESS)
-    elif menu_choice == '2':
-        display_rules()
-    else:
-        print("Please choose something else")
         
     create_battleships(SHIP_LOCATION)
     guess_ship_location()
