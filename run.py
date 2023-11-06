@@ -1,5 +1,5 @@
 from random import randint
-from pprint import pprint
+import os
 
 #create a dictionary to convert letters to numbers, allowing user to use Int values to guess ship location
 letter_to_number = {'A': 1, 'B': 2, 'C': 3, 'D': 4, 'E': 5}
@@ -12,6 +12,12 @@ SHIP_LOCATION = [[''] * 5 for x in range(5)]
 
 user_turn = 0
 user_score = 0
+
+def cls():
+    """
+    Sends the command 'cls' to the terminal to clear text
+    """
+    os.system('cls' if os.name=='nt' else 'clear')
 
 def start_screen():
     """Prints welcome screen with ASCII art and menu page"""
