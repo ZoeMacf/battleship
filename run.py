@@ -6,7 +6,7 @@ import os
 letter_to_number = {'A': 1, 'B': 2, 'C': 3, 'D': 4, 'E': 5}
 
 #Uses list comprehension to create a blank list eight times, this can then be populated by the user's guesses and compared to the ship locations
-USER_GUESS = [['O'] * 5 for x in range(5)]
+USER_GUESS= [['O'] * 5 for x in range(5)]
 
 #Uses list comprehension to create a blank list eight times, this can then be populated by the ships locations
 SHIP_LOCATION = [[''] * 5 for x in range(5)]
@@ -62,7 +62,7 @@ ____^/\___^--____/\____O______________/\/\---/\___________---______________
    /\^   ^  ^    ^                  ^^ ^  '\ ^          ^       ---
          --           -            --  -      -         ---  __       ^
    --  __                      ___--  ^  ^                         --  __     
-   
+  
 """)
     
     print("Greetings rookie!\n")
@@ -137,15 +137,35 @@ def create_battleships(game_board):
         battleship_col = randint(0,4)
         game_board[battleship_row][battleship_col] = "S"
 
-def guess_ship_location(user_board, computer_board):
+def user_guess(user_board, computer_board):
     """
     Allows the user to guess the location of the ships and returns the guess.
     """ 
     global user_turn
     global user_score
     while user_turn < 10:
-        row = int(input("Please enter a row number from 1-5\n")) - 1
-        col = letter_to_number[input("Please enter a column letter from A-E\n").upper()] - 1
+        while True:
+            try:
+                row = int(input("Please enter a row number from 1-5\n")) - 1
+                if row not in range(5):
+                    raise ValueError("Please enter a value from 1-5")
+            except ValueError as e:
+                print(f"Invalid value {e}: Please lock in a row coordinate from 1-5\n")
+                continue
+            else:
+                break
+
+        while True:
+            try:
+                col = letter_to_number[input("Please enter a column letter from A-E\n").upper()] - 1
+                if col not in range(5):
+                    raise KeyError("Please enter a value from A-E")
+            except KeyError as e:
+                print(f"Invalid value {e}: Please lock in a column coordinate from A-E\n")
+                continue
+            else:
+                break
+         
         if computer_board[row][col] == "S":
             user_board[row][col] = "X"
             user_turn += 1
@@ -154,11 +174,13 @@ def guess_ship_location(user_board, computer_board):
             print("Locking on...\n")
             print("HIT\n")
             display_game_board(user_board)
+            
         elif computer_board[row][col] == "X":
             user_turn += 1
             cls()
             print("Hey rookie we fired there already!\n")
             display_game_board(user_board)
+            
         else:
             user_board[row][col] = "/"
             user_turn += 1
@@ -166,6 +188,7 @@ def guess_ship_location(user_board, computer_board):
             print("Locking on...\n") 
             print("Miss!\n")
             display_game_board(user_board)
+            
     return user_score
             
         
@@ -183,7 +206,7 @@ def hit_count(count):
 def begin_game():
     display_game_board(USER_GUESS)
     create_battleships(SHIP_LOCATION)
-    guess_ship_location(USER_GUESS, SHIP_LOCATION)
+    user_guess(USER_GUESS, SHIP_LOCATION)
     hit_count(user_score)
     
 if __name__ == "__main__":
