@@ -26,28 +26,42 @@ def start_screen():
     
     print("""
     
-                                                                                       
- _|_|_|                _|      _|      _|              _|_|_|  _|        _|            
- _|    _|    _|_|_|  _|_|_|_|_|_|_|_|  _|    _|_|    _|        _|_|_|        _|_|_|    
- _|_|_|    _|    _|    _|      _|      _|  _|_|_|_|    _|_|    _|    _|  _|  _|    _|  
- _|    _|  _|    _|    _|      _|      _|  _|              _|  _|    _|  _|  _|    _|  
- _|_|_|      _|_|_|      _|_|    _|_|  _|    _|_|_|  _|_|_|    _|    _|  _|  _|_|_|    
-                                                                             _|        
-                                                                             _| 
-                                                                             
-                                  )___(
-                           _______/__/_
-                  ___     /===========|   ___
- ____       __   [\\\]___/____________|__[///]   __
- \   \_____[\\]__/___________________________\__[//]___
-  \40A                                                 |
-   \                                                  /
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~      
+                                                                                
+   _____ __                  __    _         _______       __    __                
+  / ___// /_____ ___________/ /_  (_)___    / ____(_)___ _/ /_  / /____  __________
+  \__ \/ __/ __ `/ ___/ ___/ __ \/ / __ \  / /_  / / __ `/ __ \/ __/ _ \/ ___/ ___/
+ ___/ / /_/ /_/ / /  (__  ) / / / / /_/ / / __/ / / /_/ / / / / /_/  __/ /  (__  ) 
+/____/\__/\__,_/_/  /____/_/ /_/_/ .___/ /_/   /_/\__, /_/ /_/\__/\___/_/  /____/  
+                                /_/               /____/                            
+    
+                                                                                
+                .                                            .
+     *   .                  .              .        .   *          .
+  .         .                     .       .           .      .        .
+        o                             .                   .
+         .              .                  .           .
+          0     .
+                 .          .                 ,                ,    ,
+ .          \          .                         .
+      .      \   ,
+   .          o     .                 .                   .            .
+     .         \                 ,             .                .
+               #\##\#      .                              .        .
+             #  #O##\###                .                        .
+   .        #*#  #\##\###                       .                     ,
+        .   ##*#  #\##\##               .                     .
+      .      ##*#  #o##\#         .                             ,       .
+          .     *#  #\#     .                    .             .          ,
+                      \          .                         .
+____^/\___^--____/\____O______________/\/\---/\___________---______________
+   /\^   ^  ^    ^                  ^^ ^  '\ ^          ^       ---
+         --           -            --  -      -         ---  __       ^
+   --  __                      ___--  ^  ^                         --  __     
    
 """)
     
-    print("Welcome to the strategic game of Battleship!\n")
-    print("Have you got what it takes to take down your enemy's warships?\n")
+    print("Greetings rookie!\n")
+    print("It's time to take to the stars, are you ready to take down the enemy?\n")
     
     print("1. Start Game\n")
     print("2. Rules\n")
@@ -69,7 +83,7 @@ def exit_game():
     Will print a goodbye message to the user and clear the screen"
     """
     while True:
-        print("So long Captain!..")
+        print("So long rookie!..")
         cls()
         print("Please click Run Program to run again!")
         break
@@ -91,13 +105,13 @@ def display_rules():
     Displays the game rules to user.
     """       
     
-    print("Your goal is to try and sink all of your opponents ships before they sink yours\n")
-    print("The ships are all different sizes and will be placed around the grid\n")
+    print("Your goal is to try and take down all of the enemies starships before yours\n")
+    print("The starships will be placed around the grid\n")
     print("You must use column and row numbers only to make your guess\n")
     print("If your guess is correct 'HIT' will be displayed to the screen\n")
     print("if not then 'MISS' will be displayed\n")
     
-    print("Can you sink all the ships before your opponent?\n")
+    print("Can you take out the enemy before they get you?\n")
     
     main_menu = input("Type 'return' to go back to the main menu\n")
     
@@ -134,7 +148,7 @@ def guess_ship_location(user_board, computer_board):
             user_score += 1
             display_game_board(user_board)
         elif computer_board[row][col] == "X":
-            print("Captain, we've already fired there!")
+            print("Hey rookie we fired there already!")
             user_turn += 1
             display_game_board(user_board)
         else: 
@@ -151,9 +165,9 @@ def hit_count(count):
     Get a count of the ships that have been correctly guessed by the user
     """
     if count == 5:
-        print("You did it Captain!, we took out all of the ships!\n")
+        print("Heh, guess you're no longer a rookie, well done!\n")
     else:
-        print("Looks like you lost this round Captain\n")
+        print("Looks like you lost this round rookie\n")
     print(count)
 
 def begin_game():
