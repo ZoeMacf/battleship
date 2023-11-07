@@ -118,7 +118,7 @@ def create_battleships(game_board):
         battleship_col = randint(0,4)
         game_board[battleship_row][battleship_col] = "S"
 
-def guess_ship_location():
+def guess_ship_location(user_board, computer_board):
     """
     Allows the user to guess the location of the ships and returns the guess.
     """ 
@@ -127,17 +127,21 @@ def guess_ship_location():
     while user_turn < 5:
         row = int(input("Please enter a row number from 1-5\n")) - 1
         col = letter_to_number[input("Please enter a column letter from A-E\n").upper()] - 1
-        if SHIP_LOCATION[row][col] == 'S':
+        if computer_board[row][col] == "S":
             print("HIT")
-            SHIP_LOCATION[row][col] = "X"
+            user_board[row][col] = "X"
             user_turn += 1
             user_score += 1
-        elif SHIP_LOCATION[row][col] == "X":
+            display_game_board(user_board)
+        elif computer_board[row][col] == "X":
             print("Captain, we've already fired there!")
             user_turn += 1
+            display_game_board(user_board)
         else: 
             print("Miss!")
+            user_board[row][col] = "/"
             user_turn += 1
+            display_game_board(user_board)
     return user_score
             
         
@@ -155,7 +159,7 @@ def hit_count(count):
 def begin_game():
     display_game_board(USER_GUESS)
     create_battleships(SHIP_LOCATION)
-    guess_ship_location()
+    guess_ship_location(USER_GUESS, SHIP_LOCATION)
     hit_count(user_score)
     
 if __name__ == "__main__":
