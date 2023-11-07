@@ -142,17 +142,19 @@ def guess_ship_location(user_board, computer_board):
         row = int(input("Please enter a row number from 1-5\n")) - 1
         col = letter_to_number[input("Please enter a column letter from A-E\n").upper()] - 1
         if computer_board[row][col] == "S":
-            print("HIT")
+            print("Locking on...\n")
+            print("HIT\n")
             user_board[row][col] = "X"
             user_turn += 1
             user_score += 1
             display_game_board(user_board)
         elif computer_board[row][col] == "X":
-            print("Hey rookie we fired there already!")
+            print("Hey rookie we fired there already!\n")
             user_turn += 1
             display_game_board(user_board)
-        else: 
-            print("Miss!")
+        else:
+            print("Locking on...\n") 
+            print("Miss!\n")
             user_board[row][col] = "/"
             user_turn += 1
             display_game_board(user_board)
