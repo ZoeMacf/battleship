@@ -1,4 +1,5 @@
 from random import randint
+from pprint import pprint
 import os
 
 #create a dictionary to convert letters to numbers, allowing user to use Int values to guess ship location
@@ -152,6 +153,7 @@ def hit_count(count):
 
 def begin_game():
     display_game_board(USER_GUESS)
+    create_battleships(SHIP_LOCATION)
     guess_ship_location()
     
 if __name__ == "__main__":
