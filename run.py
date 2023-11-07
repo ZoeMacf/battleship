@@ -138,7 +138,7 @@ def guess_ship_location():
         else: 
             print("Miss!")
             user_turn += 1
-    hit_count(user_score)
+    return user_score
             
         
 
@@ -150,11 +150,13 @@ def hit_count(count):
         print("You did it Captain!, we took out all of the ships!\n")
     else:
         print("Looks like you lost this round Captain\n")
+    print(count)
 
 def begin_game():
     display_game_board(USER_GUESS)
     create_battleships(SHIP_LOCATION)
     guess_ship_location()
+    hit_count(user_score)
     
 if __name__ == "__main__":
     start_screen() 
