@@ -6,13 +6,18 @@ import os
 letter_to_number = {'A': 1, 'B': 2, 'C': 3, 'D': 4, 'E': 5}
 
 #Uses list comprehension to create a blank list eight times, this can then be populated by the user's guesses and compared to the ship locations
-USER_GUESS= [['O'] * 5 for x in range(5)]
+GUESS_BOARD= [['O'] * 5 for x in range(5)]
 
 #Uses list comprehension to create a blank list eight times, this can then be populated by the ships locations
 SHIP_LOCATION = [[''] * 5 for x in range(5)]
 
+USER_SHIPS = [[''] * 5 for x in range(5)]
+
 user_turn = 0
 user_score = 0
+
+comp_turn = 0
+comp_score = 0
 
 #https://stackoverflow.com/questions/517970/how-to-clear-the-interpreter-console
 def cls():
@@ -143,7 +148,7 @@ def user_guess(user_board, computer_board):
     """ 
     global user_turn
     global user_score
-    while user_turn < 10:
+    while user_turn < 5:
         while True:
             try:
                 row = int(input("Please enter a row number from 1-5\n")) - 1
@@ -190,24 +195,41 @@ def user_guess(user_board, computer_board):
             display_game_board(user_board)
             
     return user_score
-            
-        
 
-def hit_count(count):
+def comp_guess(user_board):
     """
-    Get a count of the ships that have been correctly guessed by the user
+    Will randomly generate guesses for the computer to try and hit the user's ships
     """
-    if count == 5:
-        print("Heh, guess you're no longer a rookie, well done!\n")
-    else:
-        print("Looks like you lost this round rookie\n")
-    print(count)
+    global comp_turn
+    global comp_score
+    
+    print("The enemy has there sights on us!..\n")
+    print()
+    while comp_turn < 10:
+        row = randint(0,4)
+        col = randint(0,4)
+        
+        if user_board[row][col] == "S":
+            print("Woah we've been hit!\n")
+            comp_score +=1
+            comp_turn += 1
+        else: 
+            print("Hah! Thought you could hit us!\n")
+            comp_turn += 1
+    
+    
 
 def begin_game():
-    display_game_board(USER_GUESS)
+    display_game_board(GUESS_BOARD)
     create_battleships(SHIP_LOCATION)
-    user_guess(USER_GUESS, SHIP_LOCATION)
-    hit_count(user_score)
+    create_battleships(USER_SHIPS)
+    display_game_board(USER_SHIPS)
+    play_game()
+    #hit_count(user_score)
+    
+def play_game():
+    user_guess(GUESS_BOARD, SHIP_LOCATION)
+    comp_guess(USER_SHIPS)
     
 if __name__ == "__main__":
     start_screen() 
