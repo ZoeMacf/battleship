@@ -152,7 +152,7 @@ def create_battleships(game_board):
         battleship_col = randint(0,4)
         game_board[battleship_row][battleship_col] = "S"
 
-def user_guess(guess_board, user_board, SHIP_LOCATION):
+def user_guess(guess_board, user_board, comp_board):
     """
     Allows the user to guess the location of the ships and returns the guess.
     """ 
@@ -181,7 +181,7 @@ def user_guess(guess_board, user_board, SHIP_LOCATION):
             else:
                 break
          
-        if SHIP_LOCATION[row][col] == "S":
+        if comp_board[row][col] == "S":
             guess_board[row][col] = "X"
             user_turn += 1
             user_score += 1
@@ -190,7 +190,7 @@ def user_guess(guess_board, user_board, SHIP_LOCATION):
             print("HIT\n")
             display_game_board(guess_board, user_board)
             
-        elif SHIP_LOCATION[row][col] == "X":
+        elif comp_board[row][col] == "X":
             user_turn += 1
             cls()
             print("Hey rookie we fired there already!\n")
@@ -203,6 +203,9 @@ def user_guess(guess_board, user_board, SHIP_LOCATION):
             print("Locking on...\n") 
             print("Miss!\n")
             display_game_board(guess_board, user_board)
+    
+    if user_score < 5:
+        comp_guess(GUESS_BOARD,USER_SHIPS)
             
     return user_score
 
@@ -241,27 +244,16 @@ def comp_guess(guess_board, user_board):
 # goes to Joanne Lee: https://github.com/lee-joanne/pirate_ship/tree/main
 def play_game():
     while True:
-            SHIP_LOCATION.user_guess()
-            if (SHIP_LOCATION.user_score) == 5:
-                print("YOU WIN!")
+            user_guess(GUESS_BOARD, USER_SHIPS, SHIP_LOCATION)
+            if (user_score) == 5:
+                print("You did it rookie, their retreating..well I guess your not a rookie anymore\n")
                 break
-            elif (USER_SHIPS.computer_score) == 5:
-                print("YOU LOSE!")
+            elif (comp_score) == 5:
+                print("Looks like you weren't cut out for this, come back after more training\n")
                 break
             else:
-                pass
-    #user_guess(GUESS_BOARD,USER_SHIPS, SHIP_LOCATION)
-    #comp_guess(GUESS_BOARD,USER_SHIPS)
-    #calculate_score(user_score, comp_score)     
-            
-def calculate_score(user_count, comp_count):
-    if user_count > comp_count:
-        print("You did it rookie, their retreating..well I guess your not a rookie anymore\n")
-    else:
-        print("Looks like you weren't cut out for this, come back after more training\n")
+                pass 
     
-    
-
 def begin_game():
     create_battleships(SHIP_LOCATION)
     create_battleships(USER_SHIPS)
