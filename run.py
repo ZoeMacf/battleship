@@ -216,6 +216,12 @@ def comp_guess(user_board):
         else: 
             print("Hah! Thought you could hit us!\n")
             comp_turn += 1
+            
+def calculate_score(user_count, comp_count):
+    if user_count > comp_count:
+        print("You did it rookie, their retreating..well I guess your not a rookie anymore\n")
+    else:
+        print("Looks like you weren't cut out for this, come back after more training\n")
     
     
 
@@ -230,6 +236,7 @@ def begin_game():
 def play_game():
     user_guess(GUESS_BOARD, SHIP_LOCATION)
     comp_guess(USER_SHIPS)
+    calculate_score(user_score, comp_score)
     
 if __name__ == "__main__":
     start_screen() 
