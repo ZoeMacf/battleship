@@ -11,7 +11,7 @@ GUESS_BOARD= [['O'] * 5 for x in range(5)]
 #Uses list comprehension to create a blank list eight times, this can then be populated by the ships locations
 SHIP_LOCATION = [[''] * 5 for x in range(5)]
 
-USER_SHIPS = [[''] * 5 for x in range(5)]
+USER_SHIPS = [['O'] * 5 for x in range(5)]
 
 user_turn = 0
 user_score = 0
@@ -210,12 +210,22 @@ def comp_guess(user_board):
         col = randint(0,4)
         
         if user_board[row][col] == "S":
-            print("Woah we've been hit!\n")
+            user_board[row][col] = "X"
             comp_score +=1
             comp_turn += 1
-        else: 
-            print("Hah! Thought you could hit us!\n")
+            cls()
+            print("We're in the enemies sights!\n")
+            print()
+            print("Woah we've been hit!\n")
+            display_game_board(user_board)
+        else:
+            user_board[row][col] = "/"
             comp_turn += 1
+            cls()
+            print("We're in the enemies sights!\n")
+            print()
+            print("Hah! Thought you could hit us!\n")
+            display_game_board(user_board)
             
 def calculate_score(user_count, comp_count):
     if user_count > comp_count:
