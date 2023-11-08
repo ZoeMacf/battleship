@@ -105,13 +105,14 @@ def display_game_board(guess_board, user_board):
     """
     # Creates a grid for the game_board using join to print row headers and the zip function to pair letters with each row.
     #https://stackoverflow.com/questions/53446425/creating-a-row-of-numbers-letters-in-my-python-battleship-game
+    print()
     print("Use this to pinpoint the enemies coordinates\n")
     print()
-    
     print(" ", " ".join("ABCDE"))
     for letter, row in zip("12345", guess_board):
         print(letter, " ".join(row))
-      
+    
+    print()  
     print("Our forces are ready to go!\n")
     print()  
     print(" ", " ".join("ABCDE"))
@@ -151,7 +152,7 @@ def create_battleships(game_board):
         battleship_col = randint(0,4)
         game_board[battleship_row][battleship_col] = "S"
 
-def user_guess(guess_board, user_board, computer_board):
+def user_guess(guess_board, user_board, SHIP_LOCATION):
     """
     Allows the user to guess the location of the ships and returns the guess.
     """ 
@@ -180,7 +181,7 @@ def user_guess(guess_board, user_board, computer_board):
             else:
                 break
          
-        if computer_board[row][col] == "S":
+        if SHIP_LOCATION[row][col] == "S":
             guess_board[row][col] = "X"
             user_turn += 1
             user_score += 1
@@ -189,7 +190,7 @@ def user_guess(guess_board, user_board, computer_board):
             print("HIT\n")
             display_game_board(guess_board, user_board)
             
-        elif computer_board[row][col] == "X":
+        elif SHIP_LOCATION[row][col] == "X":
             user_turn += 1
             cls()
             print("Hey rookie we fired there already!\n")
@@ -224,7 +225,6 @@ def comp_guess(guess_board, user_board):
             comp_turn += 1
             cls()
             print("We're in the enemies sights!\n")
-            print()
             print("Woah we've been hit!\n")
             display_game_board(guess_board, user_board)
         else:
@@ -232,9 +232,25 @@ def comp_guess(guess_board, user_board):
             comp_turn += 1
             cls()
             print("We're in the enemies sights!\n")
-            print()
             print("Hah! Thought you could hit us!\n")
             display_game_board(guess_board, user_board)
+
+# Code credit on play_game function
+# goes to Joanne Lee: https://github.com/lee-joanne/pirate_ship/tree/main
+def play_game():
+    while True:
+            SHIP_LOCATION.user_guess()
+            if (SHIP_LOCATION.user_score) == 5:
+                print("YOU WIN!")
+                break
+            elif (USER_SHIPS.computer_score) == 5:
+                print("YOU LOSE!")
+                break
+            else:
+                pass
+    #user_guess(GUESS_BOARD,USER_SHIPS, SHIP_LOCATION)
+    #comp_guess(GUESS_BOARD,USER_SHIPS)
+    #calculate_score(user_score, comp_score)     
             
 def calculate_score(user_count, comp_count):
     if user_count > comp_count:
@@ -250,11 +266,6 @@ def begin_game():
     display_game_board(GUESS_BOARD, USER_SHIPS)
     play_game()
     #hit_count(user_score)
-    
-def play_game():
-    user_guess(GUESS_BOARD,USER_SHIPS, SHIP_LOCATION)
-    comp_guess(GUESS_BOARD,USER_SHIPS)
-    calculate_score(user_score, comp_score)
     
 if __name__ == "__main__":
     start_screen() 
