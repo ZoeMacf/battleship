@@ -203,10 +203,10 @@ def user_guess(guess_board, user_board, comp_board):
             print("Locking on...\n") 
             print("Miss!\n")
             display_game_board(guess_board, user_board)
-    
+            
     if user_score < 5:
         comp_guess(GUESS_BOARD,USER_SHIPS)
-            
+
     return user_score
 
 def comp_guess(guess_board, user_board):
@@ -218,7 +218,7 @@ def comp_guess(guess_board, user_board):
     
     print("The enemy has there sights on us!..\n")
     print()
-    while comp_turn < 10:
+    while comp_turn < 5:
         row = randint(0,4)
         col = randint(0,4)
         
@@ -237,7 +237,7 @@ def comp_guess(guess_board, user_board):
             print("We're in the enemies sights!\n")
             print("Hah! Thought you could hit us!\n")
             display_game_board(guess_board, user_board)
-            
+
     return comp_score
 
 # Code credit on play_game function
