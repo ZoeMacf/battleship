@@ -234,6 +234,8 @@ def comp_guess(guess_board, user_board):
             print("We're in the enemies sights!\n")
             print("Hah! Thought you could hit us!\n")
             display_game_board(guess_board, user_board)
+            
+    return comp_score
 
 # Code credit on play_game function
 # goes to Joanne Lee: https://github.com/lee-joanne/pirate_ship/tree/main
