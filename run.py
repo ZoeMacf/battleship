@@ -5,14 +5,6 @@ import os
 #create a dictionary to convert letters to numbers, allowing user to use Int values to guess ship location
 letter_to_number = {'A': 1, 'B': 2, 'C': 3, 'D': 4, 'E': 5}
 
-#Uses list comprehension to create a blank list eight times, this can then be populated by the user's guesses and compared to the ship locations
-GUESS_BOARD= [['O'] * 5 for x in range(5)]
-
-#Uses list comprehension to create a blank list eight times, this can then be populated by the ships locations
-SHIP_LOCATION = [[''] * 5 for x in range(5)]
-
-USER_SHIPS = [['O'] * 5 for x in range(5)]
-
 user_turn = 0
 user_score = 0
 
@@ -98,6 +90,17 @@ def exit_game():
         print("Please click Run Program to run again!")
         break
 
+def create_game_boards():
+    #Uses list comprehension to create a blank list eight times, this can then be populated by the user's guesses and compared to the ship locations
+    guess_board = [['O'] * 5 for x in range(5)]
+
+    #Uses list comprehension to create a blank list eight times, this can then be populated by the ships locations
+    computers_ships = [[''] * 5 for x in range(5)]
+
+    users_ships = [['O'] * 5 for x in range(5)]
+    
+    return guess_board, computers_ships, users_ships
+    
 def display_game_board(game_board):
     """
     Generates a game board for the user
@@ -236,8 +239,8 @@ def calculate_score(user_count, comp_count):
     
 
 def begin_game():
-    display_game_board(GUESS_BOARD)
-    create_battleships(SHIP_LOCATION)
+    display_game_board()
+    create_battleships(COMPUTER_BOARD)
     create_battleships(USER_SHIPS)
     display_game_board(USER_SHIPS)
     play_game()
