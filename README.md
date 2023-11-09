@@ -152,6 +152,18 @@ In order to deploy the final build of my project online I used Heroku. This was 
 
 ## Testing
 
+All of the code within this program was tested using Code Institute's PEP8. When first run there were errors based around lines being too long, and trailing whitespaces. 
+
+This was corrected using Flake8 extension and Black, the are some remaining errors but these are coming from the ASCII art used for the start screen.
+
+![PEP8-Testing](./README-images/pep8test.PNG)
+
+### Validation Checks
+
+To ensure the correct inputs are given throughout the program validation testing was used.
+
+For example within the function for taking the user's row and column inputs a ValueError check is used to ensure that only an Int value is entered. For the columns a KeyError is used to ensure letters only when choose a column.
+
 ## Credits
 
 
