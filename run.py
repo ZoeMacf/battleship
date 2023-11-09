@@ -131,6 +131,7 @@ def display_rules():
     print("if not then 'MISS' will be displayed\n")
     
     print("Can you take out the enemy before they get you?\n")
+    print("First to five wins!\n")
     
     main_menu = input("Type 'return' to go back to the main menu\n")
     
@@ -186,7 +187,7 @@ def user_guess(guess_board, user_board, comp_board):
             user_score += 1
             cls()
             print("Locking on...\n")
-            print("HIT\n")
+            print("Hit!\n")
             break
             
         elif comp_board[row][col] == "X":
@@ -227,14 +228,14 @@ def comp_guess(guess_board, user_board):
             comp_score +=1
             #comp_turn += 1
             cls()
-            print("We're in the enemies sights!\n")
+            
             print("Woah we've been hit!\n")
             break
         else:
             user_board[row][col] = "/"
             #omp_turn += 1
             cls()
-            print("We're in the enemies sights!\n")
+            
             print("Hah! Thought you could hit us!\n")
             break
     
@@ -248,10 +249,10 @@ def play_game():
     while True:
             user_guess(GUESS_BOARD, USER_SHIPS, SHIP_LOCATION)
             if user_score == 5:
-                print("WIN")
+                print("You did it! Guess you're not a rookie anymore!")
                 break
             elif comp_score == 5:
-                print("LOSE")
+                print("Well that didn't go as planned, back to training for you!")
                 break
             else:
                 pass
