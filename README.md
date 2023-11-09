@@ -166,5 +166,24 @@ For example within the function for taking the user's row and column inputs a Va
 
 ## Credits
 
+[Battleship Youtube Video](https://www.youtube.com/watch?v=alJH_c9t4zw&t=377s)
+ - This video helped with converting the letters to numbers when user enters their input and for further use throughout the game's functions. 
+
+[Stack Overflow](https://stackoverflow.com/questions/2084508/clear-terminal-in-python)
+- This post on Stack Overflow forumns was used to create the clear terminal function used to reset the screen upon each input. 
+
+Peer Code Review
+- I used Joanne Lee's [Pirate Battleship](https://github.com/lee-joanne/pirate_ship/tree/main) for inspiration in setting up the user turn and computer turn.
+
+## Acknowledgements
+
+Tutor Support
+ - I am so grateful to all of the tutors who have assisted with my project especially with the amount of times I need to reach out towards the end as I was reaching the deadline and a big thank you to Joanne for showing me her battleship game.
+
+ - My mentor for their support and feedback throughout the project. 
+
+ - Finally I would like to thank Code Institute for giving me the opportunity to learn these new skills and to create this fun game. 
+
+
 
 
