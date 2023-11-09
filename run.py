@@ -249,11 +249,11 @@ def play_game():
     while True:
             user_guess(GUESS_BOARD, USER_SHIPS, SHIP_LOCATION)
             if user_score == 5:
-                print("You did it! Guess you're not a rookie anymore!")
-                break
+                print("You did it! Guess you're not a rookie anymore!\n")
+                print("To play again please hit 'Run Program' at the top\n")
             elif comp_score == 5:
-                print("Well that didn't go as planned, back to training for you!")
-                break
+                print("Well that didn't go as planned, back to training for you!\n")
+                print("To play again please hit 'Run Program' at the top\n")
             else:
                 pass
     
@@ -262,7 +262,6 @@ def begin_game():
     create_battleships(USER_SHIPS)
     display_game_board(GUESS_BOARD, USER_SHIPS)
     play_game()
-    #hit_count(user_score)
     
 if __name__ == "__main__":
     start_screen() 
