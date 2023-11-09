@@ -22,7 +22,7 @@ comp_score = 0
 #https://stackoverflow.com/questions/517970/how-to-clear-the-interpreter-console
 def cls():
     """
-    Sends the command 'cls' to the terminal to clear text
+    Sends the command 'cls' to the terminal to clear text, this will make for better readability for the user throughout the game
     """
     os.system('cls' if os.name=='nt' else 'clear')
 
@@ -78,6 +78,7 @@ ____^/\___^--____/\____O______________/\/\---/\___________---______________
     
     menu_choice = input("Please choose one of the above, using the numbers 1, 2 or 3\n")
     
+    #Check user input and play the next appropriate part of the program.
     if menu_choice == '1':
         begin_game()
     elif menu_choice == '2':
@@ -99,7 +100,7 @@ def exit_game():
 
 def display_game_board(guess_board, user_board):
     """
-    Generates a game board for the user
+    Generates a game board for the user's guess and one with their ships.
     and will then prompt the user to make their first choice
     """
     # Creates a grid for the game_board using join to print row headers and the zip function to pair letters with each row.
@@ -121,7 +122,7 @@ def display_game_board(guess_board, user_board):
 
 def display_rules():
     """
-    Displays the game rules to user.
+    Displays the game rules to user and allows user to go back to the main menu. 
     """       
     
     print("Your goal is to try and take down all of the enemies starships before yours\n")
@@ -142,7 +143,8 @@ def display_rules():
         
 def create_battleships(game_board):
     """
-    Will create five ships for the game
+    Creates 5 ships with random coordinates, these will be then used to populate a hidden
+    board for the computer and the user's board. 
     """
     # For each of the 5 ships assign a random integer between 1 and 7 to
     # the grid row and column.
@@ -154,7 +156,8 @@ def create_battleships(game_board):
 
 def user_guess(guess_board, user_board, comp_board):
     """
-    Allows the user to guess the location of the ships and returns the guess.
+    Allows the user to guess the location of the ships, will then validate both inputs from the user
+    after this it will check the user's input against the hidden ships and update the grid accordingly.
     """ 
     #global user_turn
     global user_score
@@ -226,14 +229,12 @@ def comp_guess(guess_board, user_board):
         if user_board[row][col] == "S":
             user_board[row][col] = "X"
             comp_score +=1
-            #comp_turn += 1
             cls()
             
             print("Woah we've been hit!\n")
             break
         else:
             user_board[row][col] = "/"
-            #omp_turn += 1
             cls()
             
             print("Hah! Thought you could hit us!\n")
@@ -246,6 +247,10 @@ def comp_guess(guess_board, user_board):
 # Code credit on play_game function
 # goes to Joanne Lee: https://github.com/lee-joanne/pirate_ship/tree/main
 def play_game():
+    """
+    Will create a loop to continuously play the game until either the user or computer
+    reaches a score of 5, once score is met a win or lose message is printed. 
+    """
     while True:
             user_guess(GUESS_BOARD, USER_SHIPS, SHIP_LOCATION)
             if user_score == 5:
@@ -258,6 +263,11 @@ def play_game():
                 pass
     
 def begin_game():
+    """
+    Will create the ships for both the user's board and the computer's hidden ships board
+    once done the user's board and a blank board for guessing will be displayed.
+    Finally the game will be played out. 
+    """
     create_battleships(SHIP_LOCATION)
     create_battleships(USER_SHIPS)
     display_game_board(GUESS_BOARD, USER_SHIPS)
