@@ -166,6 +166,36 @@ To ensure the correct inputs are given throughout the program validation testing
 
 For example within the function for taking the user's row and column inputs a ValueError check is used to ensure that only an Int value is entered. For the columns a KeyError is used to ensure letters only when choose a column.
 
+## Bugs
+
+### Resolved Bugs
+
+##### Out of Range Error
+
+![out-of-range](./README-images/outofrange.PNG)
+
+When entering the letter 'E' the above error was displaying in the terminal. This was caused by Python indexing beginning at 0, by adding -1 to the column input this error was fixed. 
+
+##### KeyValue Error
+
+![keyvalue-error](./README-images/keyvalueerror.PNG)
+
+This error ocurred when trying to validate user's input for column from A-E, this was fixed by changing the error check from ValueError to KeyValue
+
+### Unresolved Bugs
+
+##### Hit or Miss no longer prints
+
+As the code was worked on further and functions updated the messages printed to the user to advise if the hit or missed the target stopped printing, I have been unable to determine what has caused this error. 
+
+##### Same Input Entered Error
+
+When choosing coordinates to check if the input matches one already used a message should print to say the user already tried there, however this will not print. I tried to amend this by also checking for missed targets but then the code would no longer work. 
+
+##### Computer does not win as often
+
+Not sure if this is by chance or an error with the code, but it appears the computer does not seem to win often or at all when testing. 
+
 ## Credits
 
 [Battleship Youtube Video](https://www.youtube.com/watch?v=alJH_c9t4zw&t=377s)
