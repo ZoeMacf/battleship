@@ -102,6 +102,10 @@ User wins the game
 
 #### Future Implementations
 
+In future I would like to add a turn count for the user and computer maybe as a difficulty option as you can keep guessing till the board is filled. 
+
+I would also like the option to display both scores and possibly a high score option using a Google Sheets. 
+
 ## Technologies Used
 
 ## Deployment
