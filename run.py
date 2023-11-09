@@ -155,7 +155,7 @@ def user_guess(guess_board, user_board, comp_board):
     """
     Allows the user to guess the location of the ships and returns the guess.
     """ 
-    global user_turn
+    #global user_turn
     global user_score
     while True:
         while True:
@@ -182,7 +182,7 @@ def user_guess(guess_board, user_board, comp_board):
          
         if comp_board[row][col] == "S":
             guess_board[row][col] = "X"
-            user_turn += 1
+            #user_turn += 1
             user_score += 1
             cls()
             print("Locking on...\n")
@@ -190,14 +190,14 @@ def user_guess(guess_board, user_board, comp_board):
             break
             
         elif comp_board[row][col] == "X":
-            user_turn += 1
+            #user_turn += 1
             cls()
             print("Hey rookie we fired there already!\n")
             break
             
         else:
             guess_board[row][col] = "/"
-            user_turn += 1
+            #user_turn += 1
             cls()
             print("Locking on...\n") 
             print("Miss!\n")
@@ -213,7 +213,7 @@ def comp_guess(guess_board, user_board):
     """
     Will randomly generate guesses for the computer to try and hit the user's ships
     """
-    global comp_turn
+    #global comp_turn
     global comp_score
     
     print("The enemy has there sights on us!..\n")
@@ -225,14 +225,14 @@ def comp_guess(guess_board, user_board):
         if user_board[row][col] == "S":
             user_board[row][col] = "X"
             comp_score +=1
-            comp_turn += 1
+            #comp_turn += 1
             cls()
             print("We're in the enemies sights!\n")
             print("Woah we've been hit!\n")
             break
         else:
             user_board[row][col] = "/"
-            comp_turn += 1
+            #omp_turn += 1
             cls()
             print("We're in the enemies sights!\n")
             print("Hah! Thought you could hit us!\n")
@@ -247,7 +247,14 @@ def comp_guess(guess_board, user_board):
 def play_game():
     while True:
             user_guess(GUESS_BOARD, USER_SHIPS, SHIP_LOCATION)
-            
+            if user_score == 5:
+                print("WIN")
+                break
+            elif comp_score == 5:
+                print("LOSE")
+                break
+            else:
+                pass
     
 def begin_game():
     create_battleships(SHIP_LOCATION)
