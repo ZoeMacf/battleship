@@ -157,7 +157,7 @@ def user_guess(guess_board, user_board, comp_board):
     """ 
     global user_turn
     global user_score
-    while user_turn < 5:
+    while True:
         while True:
             try:
                 row = int(input("Please enter a row number from 1-5\n")) - 1
@@ -187,13 +187,13 @@ def user_guess(guess_board, user_board, comp_board):
             cls()
             print("Locking on...\n")
             print("HIT\n")
-            display_game_board(guess_board, user_board)
+            break
             
         elif comp_board[row][col] == "X":
             user_turn += 1
             cls()
             print("Hey rookie we fired there already!\n")
-            display_game_board(guess_board, user_board)
+            break
             
         else:
             guess_board[row][col] = "/"
@@ -201,10 +201,11 @@ def user_guess(guess_board, user_board, comp_board):
             cls()
             print("Locking on...\n") 
             print("Miss!\n")
-            display_game_board(guess_board, user_board)
+            break
             
+    display_game_board(guess_board, user_board)        
     if user_score < 5:
-        comp_guess(GUESS_BOARD,USER_SHIPS)
+     comp_guess(GUESS_BOARD,USER_SHIPS)
 
     return user_score
 
@@ -217,7 +218,7 @@ def comp_guess(guess_board, user_board):
     
     print("The enemy has there sights on us!..\n")
     print()
-    while comp_turn < 5:
+    while True:
         row = randint(0,4)
         col = randint(0,4)
         
@@ -228,14 +229,16 @@ def comp_guess(guess_board, user_board):
             cls()
             print("We're in the enemies sights!\n")
             print("Woah we've been hit!\n")
-            display_game_board(guess_board, user_board)
+            break
         else:
             user_board[row][col] = "/"
             comp_turn += 1
             cls()
             print("We're in the enemies sights!\n")
             print("Hah! Thought you could hit us!\n")
-            display_game_board(guess_board, user_board)
+            break
+    
+    display_game_board(guess_board, user_board)
 
     return comp_score
 
@@ -244,14 +247,7 @@ def comp_guess(guess_board, user_board):
 def play_game():
     while True:
             user_guess(GUESS_BOARD, USER_SHIPS, SHIP_LOCATION)
-            if (user_score) == 5:
-                print("You did it rookie, their retreating..well I guess your not a rookie anymore\n")
-                break
-            elif (comp_score) == 5:
-                print("Looks like you weren't cut out for this, come back after more training\n")
-                break
-            else:
-                pass 
+            
     
 def begin_game():
     create_battleships(SHIP_LOCATION)
