@@ -190,7 +190,7 @@ def user_guess(guess_board, user_board, comp_board):
             print("Hit!\n")
             break
             
-        elif comp_board[row][col] == "X":
+        elif guess_board[row][col] == "X":
             #user_turn += 1
             cls()
             print("Hey rookie we fired there already!\n")
