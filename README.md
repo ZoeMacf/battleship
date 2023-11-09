@@ -1,4 +1,4 @@
-# Battleship
+# Starship Fighters
 
 ## Contents
 
@@ -46,6 +46,9 @@ Starship Fighters plays out the same way as the classic 'Battleship', at the mai
 During the users turn they will be asked to choose a number ranging from 1-5 for their chosen row and then a letter from A-E for their chosen column. Once entered the blank grid will update with either "X" for a hit or "/" for a miss. The same will happen on the board with the user's ships except the "S" will change to "X".
 
 The first to reach a score of five will win the game and the user will be given an option to play again. 
+
+Live version of game can be found here:
+[Starship Figters](https://starship-fighters-1c920d04c48c.herokuapp.com/)
 
 ## Features
 
