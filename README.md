@@ -108,6 +108,24 @@ I would also like the option to display both scores and possibly a high score op
 
 ## Technologies Used
 
+### Languages and Python Packages/Libraries Used
+
+- [Python](https://www.python.org/) 
+
+- [Random](https://www.w3schools.com/python/module_random.asp)
+    - Random was used to generate the user's ships and computer ships at the beginning of the game. 
+
+### Frameworks and Programs Used
+
+- #### [Visual Studio Code](https://code.visualstudio.com/)
+The entirety of the site was coded using Visual Studio Code.
+
+- #### [GitHub](https://github.com/)
+    - GitHub was used to store code online and serves a source for Heroku 
+
+- #### [Heroku](https://dashboard.heroku.com/login)
+    - This was used to deploy my Python Terminal online once it was linked to the Repo.
+
 ## Deployment
 
 In order to deploy the final build of my project online I used Heroku. This was done by the following: 
