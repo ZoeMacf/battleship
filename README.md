@@ -109,6 +109,8 @@ In future I would like to add a turn count for the user and computer maybe as a 
 
 I would also like the option to display both scores and possibly a high score option using a Google Sheets. 
 
+I would like to look at adding more board sizes in line with adding further turns, try to make the game more difficult. 
+
 ## Technologies Used
 
 ### Languages and Python Packages/Libraries Used
