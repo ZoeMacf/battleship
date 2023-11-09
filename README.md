@@ -49,6 +49,49 @@ The first to reach a score of five will win the game and the user will be given 
 
 ## Features
 
+### Start Screen
+
+At the beginning of the game the user will be presented with the logo for "Starship Fighters" along with a space background, below this will be a menu allowing them to choose one of the following:
+
+ 1. Start Game
+ 2. Display Rules
+ 3. Exit Game
+
+ ![Start-Screen1](./README-images/startscreen1.PNG)
+ ![Start-Screen2](./README-images/startscreen2.PNG)
+
+### Display Rules
+
+If the user enters '2' as their choice the rules will be displayed. 
+
+![Game-Rules](./README-images/gamerules.PNG)
+
+### Start Game
+
+If the user enters '1' as their choice the game will begin and both boards will be printed to the screen.
+
+![Begin-Game](./README-images/begingame.PNG)
+
+### Choosing Row
+
+User is asked to enter a number from 1-5 for their choice of row.
+
+![Row-Choice](./README-images/enterrow.PNG)
+
+### Choosing Column
+
+User is asked to enter a letter from A-E for their choice of row. The game will convert the letter an Int for validation and and check with computer's hidden ships.
+
+![Column-Choice](./README-images/entercol.PNG)
+
+### Grids Updated
+
+After the input from user has been taken and validated the grids for both the user's guesses and the user's ships are updated to reflect if they were hit or not. 
+
+In this instance both myself and the computer missed. 
+
+![Grid-Update](./README-images/gridupdate.PNG)
+
 #### Future Implementations
 
 ## Technologies Used
