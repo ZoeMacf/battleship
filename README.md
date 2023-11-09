@@ -88,15 +88,39 @@ User is asked to enter a letter from A-E for their choice of row. The game will 
 
 After the input from user has been taken and validated the grids for both the user's guesses and the user's ships are updated to reflect if they were hit or not. 
 
-In this instance both myself and the computer missed. 
+In this instance both myself and the computer missed.
 
 ![Grid-Update](./README-images/gridupdate.PNG)
+
+### User Wins
+
+User wins the game
+
+![User-Win](./README-images/winmessage.PNG)
+
+### Computer Wins
 
 #### Future Implementations
 
 ## Technologies Used
 
 ## Deployment
+
+In order to deploy the final build of my project online I used Heroku. This was done by the following: 
+
+1. Push my latest code to GitHub.
+2. Go to Heroku
+3. Create new app.
+4. Enter my application name and choose Europe for region.
+5. Search for my Repo
+6. Select connect to the relevant repo you want to deploy.
+7. Go to the settings tab.
+8. Add buildpack
+9. Select Python, then save changes.
+10. Select Nodejs, then save changes.
+11. Ensure that Heroku/Python is at the top of the list, followed by Heroku/Nodejs
+12. Go to the deploy tab
+13. Scroll down to Manual Deploy and select deploy branch.
 
 ## Testing
 
