@@ -37,7 +37,7 @@ This program will replicate the classic strategy game Battleship by allowing the
 
 #### Flowchart
 
-![Battleship-flowchart](./README-images/battleshipflowchart.drawio.png)
+![StarshipFighters-flowchart](./README-images/starshipfightersflowchart.drawio.png)
 
 ## How to play
 
