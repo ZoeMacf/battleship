@@ -170,7 +170,12 @@ def user_guess(guess_board, user_board, comp_board):
             user_turn += 1
             cls()
             print(Fore.RED + "Hey rookie we fired there already!\n")
-            break
+            print(Style.RESET_ALL)
+
+        elif guess_board[row][col] == "/":
+            user_turn += 1
+            cls()
+            print(Fore.RED + "Hey rookie we fired there already!\n")
             print(Style.RESET_ALL)
 
         else:
