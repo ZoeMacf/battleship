@@ -1,5 +1,7 @@
+from colorama import Fore, Back, Style
 """Module providing randint function from random."""
 from random import randint
+import pyfiglet
 import os
 # create a dictionary to convert letters to numbers,
 # allowing user to use Int values to guess ship location
@@ -93,18 +95,20 @@ def display_game_board(guess_board, user_board):
     # row headers and the zip function to pair letters with each row.
     # https://stackoverflow.com/questions/53446425/creating-a-row-of-numbers-letters-in-my-python-battleship-game
     print()
-    print("Use this to pinpoint the enemies coordinates\n")
+    print(Fore.MAGENTA + "Use this to pinpoint the enemies coordinates\n")
     print()
     print(" ", " ".join("ABCDE"))
     for letter, row in zip("12345", guess_board):
         print(letter, " ".join(row))
+    print(Style.RESET_ALL)
 
     print()
-    print("Our forces are ready to go!\n")
+    print(Fore.BLUE + "Our forces are ready to go!\n")
     print()
     print(" ", " ".join("ABCDE"))
     for letter, row in zip("12345", user_board):
         print(letter, " ".join(row))
+    print(Style.RESET_ALL)
 
 def user_guess(guess_board, user_board, comp_board):
     """
@@ -160,16 +164,18 @@ def user_guess(guess_board, user_board, comp_board):
         elif guess_board[row][col] == "X":
             # user_turn += 1
             cls()
-            print("Hey rookie we fired there already!\n")
+            print(Fore.RED + "Hey rookie we fired there already!\n")
             break
+            print(Style.RESET_ALL)
 
         else:
             guess_board[row][col] = "/"
             # user_turn += 1
             cls()
             print("Locking on...\n")
-            print("Miss!\n")
+            print(Fore.RED + "Miss!\n")
             break
+            print(Style.RESET_ALL)
 
     display_game_board(guess_board, user_board)
     if user_score < 5:
@@ -197,13 +203,13 @@ def comp_guess(guess_board, user_board):
             comp_score += 1
             cls()
 
-            print("Woah we've been hit!\n")
+            print(Fore.RED + "Woah we've been hit!\n")
             break
         else:
             user_board[row][col] = "/"
             cls()
 
-            print("Hah! Thought you could hit us!\n")
+            print(Fore.RED + "Hah! Thought you could hit us!\n")
             break
 
     display_game_board(guess_board, user_board)
@@ -222,10 +228,10 @@ def play_game():
     while True:
         user_guess(GUESS_BOARD, USER_SHIPS, SHIP_LOCATION)
         if user_score == 5:
-            print("You did it! Guess you're not a rookie anymore!\n")
+            print(Fore.GREEN + "You did it! Guess you're not a rookie anymore!\n")
             print("To play again please hit 'Run Program' at the top\n")
         elif comp_score == 5:
-            print("Well that didn't go as planned,\
+            print(Fore.RED + "Well that didn't go as planned,\
             back to training for you!\n")
             print("To play again please hit 'Run Program' at the top\n")
         else:
@@ -245,21 +251,10 @@ def cls():
 def start_screen():
     """Prints welcome screen with ASCII art and menu page"""
 
-    print(
-        """
-
-
-                         _____ __                  __    _              
-                        / ___// /_____ ___________/ /_  (_)___          
-                        \__ \/ __/ __ `/ ___/ ___/ __ \/ / __ \         
-                       ___/ / /_/ /_/ / /  (__  ) / / / / /_/ /         
-     _________________/____/\__/\__,_/_/  /____/_/ /_/_/ .___/          
-    /_____/_____/_____/___       __    __             /_/               
-                  / ____(_)___ _/ /_  / /____  __________               
-                 / /_  / / __ `/ __ \/ __/ _ \/ ___/ ___/               
-                / __/ / / /_/ / / / / /_/  __/ /  (__  )                
-               /_/   /_/\__, /_/ /_/\__/\___/_/  /____/_________________
-                       /____/                        /_____/_____/_____/
+while True:
+    logo = pyfiglet.figlet_format("Starship Fighters", font = "slant"  ) 
+    print(Fore.GREEN + Style.BRIGHT + logo)
+    print("""
                                                                   
                 .                                            .
      *   .                  .              .        .   *          .
@@ -286,7 +281,6 @@ ____^/\___^--____/\____O______________/\/\---/\___________---______________
   
 """
     )
-while True:
     print("Greetings rookie!\n")
     print("It's time to take to the stars,\
     are you ready to take down the enemy?\n")
@@ -306,7 +300,7 @@ while True:
     elif menu_choice == "3":
         exit_game()
     else:
-        print("Please choose something else")
+        print(Fore.RED + "Please choose something else")
 
 if __name__ == "__main__":
     start_screen()
