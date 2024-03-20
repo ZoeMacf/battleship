@@ -79,13 +79,16 @@ def create_battleships(game_board):
     these will be then used to populate a hidden
     board for the computer and the user's board.
     """
-    # For each of the 5 ships assign a random integer between 1 and 7 to
-    # the grid row and column.
-    # Add this value to the game_board and assign it 'S'
-    for x in range(5):
+
+    number_of_ships = 0
+    while number_of_ships < 5:
         battleship_row = randint(0, 4)
         battleship_col = randint(0, 4)
-        game_board[battleship_row][battleship_col] = "S"
+        if game_board[battleship_row][battleship_col] == "S":
+            continue
+        else:
+            game_board[battleship_row][battleship_col] = "S"
+            number_of_ships += 1
 
 def display_game_board(guess_board, user_board):
     """
