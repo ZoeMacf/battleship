@@ -22,117 +22,18 @@ user_score = 0
 comp_turn = 0
 comp_score = 0
 
-
-# https://stackoverflow.com/questions/517970/how-to-clear-the-interpreter-console
-def cls():
+def begin_game():
     """
-    Sends the command 'cls' to the terminal to clear text,
-    this will make for better readability for the user throughout the game
+    Will create the ships for both the user's
+    board and the computer's hidden ships board
+    once done the user's board and a blank
+    board for guessing will be displayed.
+    Finally the game will be played out.
     """
-    os.system("cls" if os.name == "nt" else "clear")
-
-
-def start_screen():
-    """Prints welcome screen with ASCII art and menu page"""
-
-    print(
-        """
-
-
-                         _____ __                  __    _              
-                        / ___// /_____ ___________/ /_  (_)___          
-                        \__ \/ __/ __ `/ ___/ ___/ __ \/ / __ \         
-                       ___/ / /_/ /_/ / /  (__  ) / / / / /_/ /         
-     _________________/____/\__/\__,_/_/  /____/_/ /_/_/ .___/          
-    /_____/_____/_____/___       __    __             /_/               
-                  / ____(_)___ _/ /_  / /____  __________               
-                 / /_  / / __ `/ __ \/ __/ _ \/ ___/ ___/               
-                / __/ / / /_/ / / / / /_/  __/ /  (__  )                
-               /_/   /_/\__, /_/ /_/\__/\___/_/  /____/_________________
-                       /____/                        /_____/_____/_____/
-                                                                  
-                .                                            .
-     *   .                  .              .        .   *          .
-  .         .                     .       .           .      .        .
-        o                             .                   .
-         .              .                  .           .
-          0     .
-                 .          .                 ,                ,    ,
- .          \          .                         .
-      .      \   ,
-   .          o     .                 .                   .            .
-     .         \                 ,             .                .
-               #\##\#      .                              .        .
-             #  #O##\###                .                        .
-   .        #*#  #\##\###                       .                     ,
-        .   ##*#  #\##\##               .                     .
-      .      ##*#  #o##\#         .                             ,       .
-          .     *#  #\#     .                    .             .          ,
-                      \          .                         .
-____^/\___^--____/\____O______________/\/\---/\___________---______________
-   /\^   ^  ^    ^                  ^^ ^  '\ ^          ^       ---
-         --           -            --  -      -         ---  __       ^
-   --  __                      ___--  ^  ^                         --  __     
-  
-"""
-    )
-while True:
-    
-    print("Greetings rookie!\n")
-    print("It's time to take to the stars,\
-    are you ready to take down the enemy?\n")
-
-    print("1. Start Game\n")
-    print("2. Rules\n")
-    print("3. Exit Game\n")
-
-    menu_choice = input("Please choose one of the above,\
-    using the numbers 1, 2 or 3\n")
-
-    # Check user input and play the next appropriate part of the program.
-    if menu_choice == "1":
-        begin_game()
-    elif menu_choice == "2":
-        display_rules()
-    elif menu_choice == "3":
-        exit_game()
-    else:
-        print("Please choose something else")
-
-
-def exit_game():
-    """
-    Will print a goodbye message to the user and clear the screen"
-    """
-    while True:
-        print("So long rookie!..")
-        cls()
-        print("Please click Run Program to run again!")
-        break
-
-
-def display_game_board(guess_board, user_board):
-    """
-    Generates a game board for the user's guess and one with their ships.
-    and will then prompt the user to make their first choice
-    """
-    # Creates a grid for the game_board using join to print
-    # row headers and the zip function to pair letters with each row.
-    # https://stackoverflow.com/questions/53446425/creating-a-row-of-numbers-letters-in-my-python-battleship-game
-    print()
-    print("Use this to pinpoint the enemies coordinates\n")
-    print()
-    print(" ", " ".join("ABCDE"))
-    for letter, row in zip("12345", guess_board):
-        print(letter, " ".join(row))
-
-    print()
-    print("Our forces are ready to go!\n")
-    print()
-    print(" ", " ".join("ABCDE"))
-    for letter, row in zip("12345", user_board):
-        print(letter, " ".join(row))
-
+    create_battleships(SHIP_LOCATION)
+    create_battleships(USER_SHIPS)
+    display_game_board(GUESS_BOARD, USER_SHIPS)
+    play_game()
 
 def display_rules():
     """
@@ -159,6 +60,15 @@ def display_rules():
     else:
         print("Error: Please type 'return' to go back to the main menu")
 
+def exit_game():
+    """
+    Will print a goodbye message to the user and clear the screen"
+    """
+    while True:
+        print("So long rookie!..")
+        cls()
+        print("Please click Run Program to run again!")
+        break
 
 def create_battleships(game_board):
     """
@@ -174,6 +84,27 @@ def create_battleships(game_board):
         battleship_col = randint(0, 4)
         game_board[battleship_row][battleship_col] = "S"
 
+def display_game_board(guess_board, user_board):
+    """
+    Generates a game board for the user's guess and one with their ships.
+    and will then prompt the user to make their first choice
+    """
+    # Creates a grid for the game_board using join to print
+    # row headers and the zip function to pair letters with each row.
+    # https://stackoverflow.com/questions/53446425/creating-a-row-of-numbers-letters-in-my-python-battleship-game
+    print()
+    print("Use this to pinpoint the enemies coordinates\n")
+    print()
+    print(" ", " ".join("ABCDE"))
+    for letter, row in zip("12345", guess_board):
+        print(letter, " ".join(row))
+
+    print()
+    print("Our forces are ready to go!\n")
+    print()
+    print(" ", " ".join("ABCDE"))
+    for letter, row in zip("12345", user_board):
+        print(letter, " ".join(row))
 
 def user_guess(guess_board, user_board, comp_board):
     """
@@ -279,7 +210,6 @@ def comp_guess(guess_board, user_board):
 
     return comp_score
 
-
 # Code credit on play_game function
 # goes to Joanne Lee: https://github.com/lee-joanne/pirate_ship/tree/main
 def play_game():
@@ -302,19 +232,81 @@ def play_game():
             pass
 
 
-def begin_game():
-    """
-    Will create the ships for both the user's
-    board and the computer's hidden ships board
-    once done the user's board and a blank
-    board for guessing will be displayed.
-    Finally the game will be played out.
-    """
-    create_battleships(SHIP_LOCATION)
-    create_battleships(USER_SHIPS)
-    display_game_board(GUESS_BOARD, USER_SHIPS)
-    play_game()
 
+# https://stackoverflow.com/questions/517970/how-to-clear-the-interpreter-console
+def cls():
+    """
+    Sends the command 'cls' to the terminal to clear text,
+    this will make for better readability for the user throughout the game
+    """
+    os.system("cls" if os.name == "nt" else "clear")
+
+
+def start_screen():
+    """Prints welcome screen with ASCII art and menu page"""
+
+    print(
+        """
+
+
+                         _____ __                  __    _              
+                        / ___// /_____ ___________/ /_  (_)___          
+                        \__ \/ __/ __ `/ ___/ ___/ __ \/ / __ \         
+                       ___/ / /_/ /_/ / /  (__  ) / / / / /_/ /         
+     _________________/____/\__/\__,_/_/  /____/_/ /_/_/ .___/          
+    /_____/_____/_____/___       __    __             /_/               
+                  / ____(_)___ _/ /_  / /____  __________               
+                 / /_  / / __ `/ __ \/ __/ _ \/ ___/ ___/               
+                / __/ / / /_/ / / / / /_/  __/ /  (__  )                
+               /_/   /_/\__, /_/ /_/\__/\___/_/  /____/_________________
+                       /____/                        /_____/_____/_____/
+                                                                  
+                .                                            .
+     *   .                  .              .        .   *          .
+  .         .                     .       .           .      .        .
+        o                             .                   .
+         .              .                  .           .
+          0     .
+                 .          .                 ,                ,    ,
+ .          \          .                         .
+      .      \   ,
+   .          o     .                 .                   .            .
+     .         \                 ,             .                .
+               #\##\#      .                              .        .
+             #  #O##\###                .                        .
+   .        #*#  #\##\###                       .                     ,
+        .   ##*#  #\##\##               .                     .
+      .      ##*#  #o##\#         .                             ,       .
+          .     *#  #\#     .                    .             .          ,
+                      \          .                         .
+____^/\___^--____/\____O______________/\/\---/\___________---______________
+   /\^   ^  ^    ^                  ^^ ^  '\ ^          ^       ---
+         --           -            --  -      -         ---  __       ^
+   --  __                      ___--  ^  ^                         --  __     
+  
+"""
+    )
+while True:
+    print("Greetings rookie!\n")
+    print("It's time to take to the stars,\
+    are you ready to take down the enemy?\n")
+
+    print("1. Start Game\n")
+    print("2. Rules\n")
+    print("3. Exit Game\n")
+
+    menu_choice = input("Please choose one of the above,\
+    using the numbers 1, 2 or 3\n")
+
+    # Check user input and play the next appropriate part of the program.
+    if menu_choice == "1":
+        begin_game()
+    elif menu_choice == "2":
+        display_rules()
+    elif menu_choice == "3":
+        exit_game()
+    else:
+        print("Please choose something else")
 
 if __name__ == "__main__":
     start_screen()
