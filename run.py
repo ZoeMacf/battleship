@@ -98,7 +98,7 @@ def display_game_board(guess_board, user_board):
     print()
     print("User Turn: ", user_turn)
     print("User Score: ", user_score)
-    print(Fore.MAGENTA + "Use this to pinpoint the enemies coordinates\n")
+    print(Fore.MAGENTA + "Captain, use this to choose our target!\n")
     print()
     print(" ", " ".join("ABCDE"))
     for letter, row in zip("12345", guess_board):
@@ -108,7 +108,7 @@ def display_game_board(guess_board, user_board):
     print()
     print("Comp Turn: ", comp_turn)
     print("Comp Score: ", comp_score)
-    print(Fore.BLUE + "Our forces are ready to go!\n")
+    print(Fore.BLUE + "Captain, our forces are ready to go!\n")
     print()
     print(" ", " ".join("ABCDE"))
     for letter, row in zip("12345", user_board):
