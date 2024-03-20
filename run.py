@@ -3,6 +3,7 @@ from colorama import Fore, Back, Style
 from random import randint
 import pyfiglet
 import os
+import sys
 # create a dictionary to convert letters to numbers,
 # allowing user to use Int values to guess ship location
 letter_to_number = {"A": 1, "B": 2, "C": 3, "D": 4, "E": 5}
@@ -67,9 +68,9 @@ def exit_game():
     Will print a goodbye message to the user and clear the screen"
     """
     while True:
-        print("So long rookie!..")
         cls()
-        print("Please click Run Program to run again!")
+        print("So long rookie!..")
+        sys.exit("Please click Run Program to run again!")
         break
 
 def create_battleships(game_board):
@@ -235,11 +236,14 @@ def play_game():
         user_guess(GUESS_BOARD, USER_SHIPS, SHIP_LOCATION)
         if user_score == 5:
             print(Fore.GREEN + "You did it! Guess you're not a rookie anymore!\n")
-            print("To play again please hit 'Run Program' at the top\n")
+            print()
+            sys.exit("To play again please hit 'Run Program' at the top\n")
+
         elif comp_score == 5:
             print(Fore.RED + "Well that didn't go as planned,\
             back to training for you!\n")
-            print("To play again please hit 'Run Program' at the top\n")
+            print()
+            sys.exit("To play again please hit 'Run Program' at the top\n")
         else:
             pass
 
