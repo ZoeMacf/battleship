@@ -76,7 +76,8 @@ ____^/\___^--____/\____O______________/\/\---/\___________---______________
   
 """
     )
-
+while True:
+    
     print("Greetings rookie!\n")
     print("It's time to take to the stars,\
     are you ready to take down the enemy?\n")
