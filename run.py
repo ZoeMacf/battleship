@@ -95,6 +95,8 @@ def display_game_board(guess_board, user_board):
     # row headers and the zip function to pair letters with each row.
     # https://stackoverflow.com/questions/53446425/creating-a-row-of-numbers-letters-in-my-python-battleship-game
     print()
+    print("User Turn: ", user_turn)
+    print("User Score: ", user_score)
     print(Fore.MAGENTA + "Use this to pinpoint the enemies coordinates\n")
     print()
     print(" ", " ".join("ABCDE"))
@@ -103,6 +105,8 @@ def display_game_board(guess_board, user_board):
     print(Style.RESET_ALL)
 
     print()
+    print("Comp Turn: ", comp_turn)
+    print("Comp Score: ", comp_score)
     print(Fore.BLUE + "Our forces are ready to go!\n")
     print()
     print(" ", " ".join("ABCDE"))
@@ -117,7 +121,7 @@ def user_guess(guess_board, user_board, comp_board):
     after this it will check the user's input against
     the hidden ships and update the grid accordingly.
     """
-    # global user_turn
+    global user_turn
     global user_score
     while True:
         while True:
@@ -154,7 +158,7 @@ def user_guess(guess_board, user_board, comp_board):
 
         if comp_board[row][col] == "S":
             guess_board[row][col] = "X"
-            # user_turn += 1
+            user_turn += 1
             user_score += 1
             cls()
             print("Locking on...\n")
@@ -162,7 +166,7 @@ def user_guess(guess_board, user_board, comp_board):
             break
 
         elif guess_board[row][col] == "X":
-            # user_turn += 1
+            user_turn += 1
             cls()
             print(Fore.RED + "Hey rookie we fired there already!\n")
             break
@@ -170,7 +174,7 @@ def user_guess(guess_board, user_board, comp_board):
 
         else:
             guess_board[row][col] = "/"
-            # user_turn += 1
+            user_turn += 1
             cls()
             print("Locking on...\n")
             print(Fore.RED + "Miss!\n")
@@ -189,7 +193,7 @@ def comp_guess(guess_board, user_board):
     Will randomly generate guesses for the\
     computer to try and hit the user's ships
     """
-    # global comp_turn
+    global comp_turn
     global comp_score
 
     print("The enemy has there sights on us!..\n")
@@ -201,6 +205,7 @@ def comp_guess(guess_board, user_board):
         if user_board[row][col] == "S":
             user_board[row][col] = "X"
             comp_score += 1
+            comp_turn +=1
             cls()
 
             print(Fore.RED + "Woah we've been hit!\n")
@@ -210,6 +215,7 @@ def comp_guess(guess_board, user_board):
             cls()
 
             print(Fore.RED + "Hah! Thought you could hit us!\n")
+            comp_turn +=1
             break
 
     display_game_board(guess_board, user_board)
