@@ -161,28 +161,32 @@ def user_guess(guess_board, user_board, comp_board):
             guess_board[row][col] = "X"
             user_turn += 1
             user_score += 1
-            cls()
+            print('')
             print("Locking on...\n")
+            print('')
             print("Hit!\n")
             break
 
         elif guess_board[row][col] == "X":
             user_turn += 1
-            cls()
+            print('')
             print(Fore.RED + "Hey rookie we fired there already!\n")
+            print('')
             print(Style.RESET_ALL)
 
         elif guess_board[row][col] == "/":
             user_turn += 1
-            cls()
+            print('')
             print(Fore.RED + "Hey rookie we fired there already!\n")
+            print('')
             print(Style.RESET_ALL)
 
         else:
             guess_board[row][col] = "/"
             user_turn += 1
-            cls()
+            print('')
             print("Locking on...\n")
+            print('')
             print(Fore.RED + "Miss!\n")
             break
             print(Style.RESET_ALL)
@@ -212,15 +216,16 @@ def comp_guess(guess_board, user_board):
             user_board[row][col] = "X"
             comp_score += 1
             comp_turn +=1
-            cls()
-
-            print(Fore.RED + "Woah we've been hit!\n")
+            print('')
+            print(Fore.RED + "Woah, Captain, we've been hit!\n")
+            print('')
             break
         else:
             user_board[row][col] = "/"
-            cls()
-
-            print(Fore.RED + "Hah! Thought you could hit us!\n")
+            
+            print('')
+            print(Fore.RED + "Hah! They missed!\n")
+            print('')
             comp_turn +=1
             break
 
