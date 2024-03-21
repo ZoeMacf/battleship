@@ -350,7 +350,7 @@ ____^/\___^--____/\____O______________/\/\---/\___________---______________
     elif menu_choice == "3":
         exit_game()
     else:
-        print(Fore.RED + Style.BRIGHT + Style.BRIGHT + "Please choose something else")
+        print(Fore.RED + "Please choose something else")
 
 if __name__ == "__main__":
     start_screen()
