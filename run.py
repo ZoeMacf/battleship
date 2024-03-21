@@ -71,7 +71,7 @@ def exit_game():
 
 def create_enemy_ships(game_board):
     """
-    Creates 5 ships with random coordinates,\
+    Creates 5 enemy ships with random coordinates,\
     these will be then used to populate a hidden
     board for the computer and the user's board.
     """
@@ -88,7 +88,7 @@ def create_enemy_ships(game_board):
 
 def create_player_ships(game_board):
     """
-    Creates 5 ships with random coordinates,\
+    Creates 5 player ships with random coordinates,\
     these will be then used to populate a hidden
     board for the computer and the user's board.
     """
@@ -104,6 +104,10 @@ def create_player_ships(game_board):
             player_ships += 1
 
 def check_ships(player_ships, enemy_ships):
+    """
+    Checks to see if 5 ships have been created,\
+    if this is true it will begin the game. 
+    """
 
     if player_ships and enemy_ships == 5:
         display_game_board(GUESS_BOARD, USER_SHIPS)
