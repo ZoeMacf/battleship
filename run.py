@@ -39,7 +39,7 @@ def begin_game():
     create_player_ships(USER_SHIPS)
     check_ships(player_ships, enemy_ships)
     play_game()
-
+    
 def display_rules():
     """
     Displays the game rules to user and
@@ -123,23 +123,23 @@ def display_game_board(guess_board, user_board):
     # Creates a grid for the game_board using join to print
     # row headers and the zip function to pair letters with each row.
     # https://stackoverflow.com/questions/53446425/creating-a-row-of-numbers-letters-in-my-python-battleship-game
-    print()
+    print('')
     print(Fore.CYAN + "User Turn: ", user_turn)
     print("User Score: ", user_score)
     print(Style.RESET_ALL)
     print(Fore.CYAN + Style.BRIGHT + "Use this board to choose our target!\n")
-    print()
+    print('')
     print(" ", " ".join("ABCDE"))
     for letter, row in zip("12345", guess_board):
         print(letter, " ".join(row))
     print(Style.RESET_ALL)
 
-    print()
+    print('')
     print(Fore.CYAN + "Comp Turn: ", comp_turn)
     print("Comp Score: ", comp_score)
     print(Style.RESET_ALL)
     print(Fore.CYAN + Style.BRIGHT + "You can see our location on this board below!\n")
-    print()
+    print('')
     print(" ", " ".join("ABCDE"))
     for letter, row in zip("12345", user_board):
         print(letter, " ".join(row))
@@ -238,7 +238,7 @@ def comp_guess(guess_board, user_board):
     global comp_score
 
     print("The enemy has there sights on us!..\n")
-    print()
+    print('')
     while True:
         row = random.randint(0, 4)
         col = random.randint(0, 4)
@@ -279,13 +279,15 @@ def play_game():
         user_guess(GUESS_BOARD, USER_SHIPS, SHIP_LOCATION)
         if user_score == 5:
             print(Fore.GREEN + "You did it! Guess you're not a rookie anymore!\n")
-            print()
+            print('')
+            print(f"You beat the enemy in {user_turn} turns")
             sys.exit("To play again please hit 'Run Program' at the top\n")
 
         elif comp_score == 5:
             print(Fore.RED + Style.BRIGHT + "Well that didn't go as planned,\
             back to training for you!\n")
-            print()
+            print('')
+            print(f"The enemy beat you in {comp_turn} turns")
             sys.exit("To play again please hit 'Run Program' at the top\n")
         else:
             pass
