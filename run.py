@@ -120,9 +120,10 @@ def display_game_board(guess_board, user_board):
     # row headers and the zip function to pair letters with each row.
     # https://stackoverflow.com/questions/53446425/creating-a-row-of-numbers-letters-in-my-python-battleship-game
     print()
-    print("User Turn: ", user_turn)
+    print(Fore.CYAN + "User Turn: ", user_turn)
     print("User Score: ", user_score)
-    print(Fore.MAGENTA + "Captain, use this board to choose our target!\n")
+    print(Style.RESET_ALL)
+    print(Fore.CYAN + Style.BRIGHT + "Use this board to choose our target!\n")
     print()
     print(" ", " ".join("ABCDE"))
     for letter, row in zip("12345", guess_board):
@@ -130,9 +131,10 @@ def display_game_board(guess_board, user_board):
     print(Style.RESET_ALL)
 
     print()
-    print("Comp Turn: ", comp_turn)
+    print(Fore.CYAN + "Comp Turn: ", comp_turn)
     print("Comp Score: ", comp_score)
-    print(Fore.BLUE + "Captain, you can see our location on this board below!\n")
+    print(Style.RESET_ALL)
+    print(Fore.CYAN + Style.BRIGHT + "You can see our location on this board below!\n")
     print()
     print(" ", " ".join("ABCDE"))
     for letter, row in zip("12345", user_board):
@@ -151,11 +153,11 @@ def user_guess(guess_board, user_board, comp_board):
     while True:
         while True:
             try:
-                row = int(input("Please enter a row number from 1-5\n")) - 1
+                row = int(input(Fore.CYAN + "Please enter a row number from 1-5\n")) - 1
                 if row not in range(5):
                     raise ValueError("Please enter a value from 1-5")
             except ValueError as e:
-                print(f"Invalid value {e}: Please lock\
+                print(Fore.RED + Style.BRIGHT + Style.BRIGHT + f"Invalid value {e}: Please lock\
                 in a row coordinate from 1-5\n")
                 continue
             else:
@@ -173,7 +175,7 @@ def user_guess(guess_board, user_board, comp_board):
                 if col not in range(5):
                     raise KeyError("Please enter a value from A-E")
             except KeyError as e:
-                print(
+                print(Fore.RED + Style.BRIGHT + Style.BRIGHT + 
                     f"Invalid value {e}: Please lock in\
                     a column coordinate from A-E\n"
                 )
@@ -186,22 +188,23 @@ def user_guess(guess_board, user_board, comp_board):
             user_turn += 1
             user_score += 1
             print('')
-            print("Locking on...\n")
+            print(Fore.CYAN + "Locking on...\n")
             print('')
-            print("Hit!\n")
+            print(Fore.GREEN + Style.BRIGHT + "Hit!\n")
+            print(Style.RESET_ALL)
             break
 
         elif guess_board[row][col] == "X":
             user_turn += 1
             print('')
-            print(Fore.RED + "Hey rookie we fired there already!\n")
+            print(Fore.RED + Style.BRIGHT + "Hey rookie we fired there already!\n")
             print('')
             print(Style.RESET_ALL)
 
         elif guess_board[row][col] == "/":
             user_turn += 1
             print('')
-            print(Fore.RED + "Hey rookie we fired there already!\n")
+            print(Fore.RED + Style.BRIGHT + "Hey rookie we fired there already!\n")
             print('')
             print(Style.RESET_ALL)
 
@@ -211,7 +214,7 @@ def user_guess(guess_board, user_board, comp_board):
             print('')
             print("Locking on...\n")
             print('')
-            print(Fore.RED + "Miss!\n")
+            print(Fore.RED + Style.BRIGHT + "Miss!\n")
             break
             print(Style.RESET_ALL)
 
@@ -241,15 +244,17 @@ def comp_guess(guess_board, user_board):
             comp_score += 1
             comp_turn +=1
             print('')
-            print(Fore.RED + "Woah, Captain, we've been hit!\n")
+            print(Fore.RED + Style.BRIGHT + "Woah, we've been hit!\n")
             print('')
+            print(Style.RESET_ALL)
             break
         else:
             user_board[row][col] = "/"
             
             print('')
-            print(Fore.RED + "Hah! They missed!\n")
+            print(Fore.GREEN + Style.BRIGHT + "Hah! They missed!\n")
             print('')
+            print(Style.RESET_ALL)
             comp_turn +=1
             break
 
@@ -274,7 +279,7 @@ def play_game():
             sys.exit("To play again please hit 'Run Program' at the top\n")
 
         elif comp_score == 5:
-            print(Fore.RED + "Well that didn't go as planned,\
+            print(Fore.RED + Style.BRIGHT + "Well that didn't go as planned,\
             back to training for you!\n")
             print()
             sys.exit("To play again please hit 'Run Program' at the top\n")
@@ -345,7 +350,7 @@ ____^/\___^--____/\____O______________/\/\---/\___________---______________
     elif menu_choice == "3":
         exit_game()
     else:
-        print(Fore.RED + Style.BRIGHT + "Please choose something else")
+        print(Fore.RED + Style.BRIGHT + Style.BRIGHT + "Please choose something else")
 
 if __name__ == "__main__":
     start_screen()
