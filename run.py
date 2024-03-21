@@ -1,5 +1,5 @@
 from colorama import Fore, Back, Style
-"""Module providing randint function from random."""
+import keyboard
 import random
 import pyfiglet
 import os
@@ -45,8 +45,7 @@ def display_rules():
     Displays the game rules to user and
     allows user to go back to the main menu.
     """
-
-    print(
+    print(Fore.CYAN +
         "Your goal is to try and take down all\
         of the enemies starships before yours\n"
     )
@@ -58,12 +57,7 @@ def display_rules():
     print("Can you take out the enemy before they get you?\n")
     print("First to five wins!\n")
 
-    main_menu = input("Type 'return' to go back to the main menu\n")
-
-    if main_menu == "return":
-        start_screen()
-    else:
-        print("Error: Please type 'return' to go back to the main menu")
+    input("Press Enter to continue...")
 
 def exit_game():
     """
@@ -303,7 +297,7 @@ def start_screen():
 
 while True:
     logo = pyfiglet.figlet_format("Starship Fighters", font = "slant"  ) 
-    print(Fore.GREEN + Style.BRIGHT + logo)
+    print(Fore.CYAN + logo)
     print("""
                                                                   
                 .                                            .
@@ -341,6 +335,7 @@ ____^/\___^--____/\____O______________/\/\---/\___________---______________
 
     menu_choice = input("Please choose one of the above,\
     using the numbers 1, 2 or 3\n")
+    print(Style.RESET_ALL)
 
     # Check user input and play the next appropriate part of the program.
     if menu_choice == "1":
@@ -350,7 +345,7 @@ ____^/\___^--____/\____O______________/\/\---/\___________---______________
     elif menu_choice == "3":
         exit_game()
     else:
-        print(Fore.RED + "Please choose something else")
+        print(Fore.RED + Style.BRIGHT + "Please choose something else")
 
 if __name__ == "__main__":
     start_screen()
