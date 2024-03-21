@@ -223,17 +223,11 @@ This error ocurred when trying to validate user's input for column from A-E, thi
 
 ### Unresolved Bugs
 
-##### Hit or Miss no longer prints
+#### Invalid Escape Sequence
 
-As the code was worked on further and functions updated the messages printed to the user to advise if the hit or missed the target stopped printing, I have been unable to determine what has caused this error. 
+Afer I changed added code for PyFiglet to the start menu and a while true loop I started to get the following error. I have checked the code several times but am unable to locate the backslash that is causing the error. 
 
-##### Same Input Entered Error
-
-When choosing coordinates to check if the input matches one already used a message should print to say the user already tried there, however this will not print. I tried to amend this by also checking for missed targets but then the code would no longer work. 
-
-##### Computer does not win as often
-
-Not sure if this is by chance or an error with the code, but it appears the computer does not seem to win often or at all when testing. 
+![invalid-escape-sequence](./README-images/invalidescape.PNG)
 
 ## Credits
 
