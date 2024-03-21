@@ -89,6 +89,12 @@ User is asked to enter a letter from A-E for their choice of row. The game will 
 
 ![Column-Choice](./README-images/choose_col.PNG)
 
+### Same Input
+
+If the user inputs a location that has previously been used the following is displayed. 
+
+![same-location](./README-images/same_input.PNG)
+
 After checking code with Pep8 this text is stuck with a large space, I tried to remedy this with Black linter for Python but it was not fixed. 
 
 ### Grids Updated
