@@ -134,8 +134,9 @@ I would like to add the option for the user to choose the colour for their board
 
 - [Python](https://www.python.org/) 
 
-- [Random](https://www.w3schools.com/python/module_random.asp)
-    - Random was used to generate the user's ships and computer ships at the beginning of the game. 
+- [Random](https://www.w3schools.com/python/module_random.asp) was used to generate the user's ships and computer ships at the beginning of the game.
+- [Colorama](https://pypi.org/project/colorama/) was used to add colours to user facing terminal. 
+- [PyFiglet](https://pypi.org/project/pyfiglet/) was used to create the Starship Fighters logo rather than pasting in ASCII art for it. 
 
 ### Frameworks and Programs Used
 
@@ -182,6 +183,27 @@ This was corrected using Flake8 extension and Black, the are some remaining erro
 To ensure the correct inputs are given throughout the program validation testing was used.
 
 For example within the function for taking the user's row and column inputs a ValueError check is used to ensure that only an Int value is entered. For the columns a KeyError is used to ensure letters only when choose a column.
+
+### Manual Testing
+
+
+| Feature Tested  | Outcome  | Test Performed  | Result  | /Fail  |
+|---|---|---|---|---|
+| `Menu Navigation`  |   |   |   |   |
+| Start Game  |  User should be able to start the game when selecting this option  | Enter '1' into the input | Game begins  | Pass  |
+|  Display Rules |  User should be able to view the rules when selecting this option  | Enter '2' into the input | Rules are displayed  | Pass  |
+| Exit Game |  User should be able to exit the game when selecting this option  | Enter '3' into the input | Game ends  | Pass  |
+|  `Game Boards` |   |   |   |   |
+|  Game Boards are created | When the game begins two boards should be displayed, one for user to make guesses and user's ship location  | Begin game  | Two game boards are displayed to the user  | Pass |
+| `Play Game`   |   |   |   |   |
+|  Row Input | User can enter a number from 1-5  | Enter '4'  | Game board updates to reflect choice  | Pass  |
+| Col Input  | User can enter a letter from A-E  | Enter 'C'  | Game board updates to reflect choice  | Pass  |
+|  Row Input - incorrect |  Enter something other than number 1-5 | Enter '6'  | Error displays and user is prompted to enter a number from 1-5  | Pass  |
+| Col Input - incorrect  | Enter something other than letter A-E  | Enter 'F'  | Error displays and user is prompted to enter a letter from A-E | Pass  |
+|  User Turn Update | When a user takes their turn the counter should update  | Guess a row and col  | Turn counter updated to '1'  | Pass  |
+| Comp Turn Update | After a user takes their turn the computer should take theirs and counter update | Take a turn  | Computer turn counter updated  | Pass  |
+|  User Score Update | Should update when a ship has been hit  | Correctly guess a location | Score updated  | Pass |
+| Comp Score Update | Should update when a ship has been hit  | Computer correcly guessed a location  | Score updated | Pass  |
 
 ## Bugs
 
