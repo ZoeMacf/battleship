@@ -1,6 +1,6 @@
 from colorama import Fore, Back, Style
 """Module providing randint function from random."""
-from random import randint
+import random
 import pyfiglet
 import os
 import sys
@@ -21,9 +21,11 @@ USER_SHIPS = [["O"] * 5 for x in range(5)]
 
 user_turn = 0
 user_score = 0
+player_ships = 0
 
 comp_turn = 0
 comp_score = 0
+enemy_ships = 0
 
 def begin_game():
     """
@@ -33,9 +35,9 @@ def begin_game():
     board for guessing will be displayed.
     Finally the game will be played out.
     """
-    create_battleships(SHIP_LOCATION)
-    create_battleships(USER_SHIPS)
-    display_game_board(GUESS_BOARD, USER_SHIPS)
+    create_enemy_ships(SHIP_LOCATION)
+    create_player_ships(USER_SHIPS)
+    check_ships(player_ships, enemy_ships)
     play_game()
 
 def display_rules():
@@ -73,22 +75,47 @@ def exit_game():
         sys.exit("Please click Run Program to run again!")
         break
 
-def create_battleships(game_board):
+def create_enemy_ships(game_board):
     """
     Creates 5 ships with random coordinates,\
     these will be then used to populate a hidden
     board for the computer and the user's board.
     """
 
-    number_of_ships = 0
-    while number_of_ships < 5:
-        battleship_row = randint(0, 4)
-        battleship_col = randint(0, 4)
+    global enemy_ships
+    while enemy_ships < 5:
+        battleship_row = random.randrange(0, 4)
+        battleship_col = random.randrange(0, 4)
         if game_board[battleship_row][battleship_col] == "S":
             continue
         else:
             game_board[battleship_row][battleship_col] = "S"
-            number_of_ships += 1
+            enemy_ships += 1
+
+def create_player_ships(game_board):
+    """
+    Creates 5 ships with random coordinates,\
+    these will be then used to populate a hidden
+    board for the computer and the user's board.
+    """
+
+    global player_ships
+    while player_ships < 5:
+        battleship_row = random.randrange(0, 4)
+        battleship_col = random.randrange(0, 4)
+        if game_board[battleship_row][battleship_col] == "S":
+            continue
+        else:
+            game_board[battleship_row][battleship_col] = "S"
+            player_ships += 1
+
+def check_ships(player_ships, enemy_ships):
+
+    if player_ships and enemy_ships == 5:
+        display_game_board(GUESS_BOARD, USER_SHIPS)
+    else:
+        create_enemy_ships()
+        create_player_ships()
 
 def display_game_board(guess_board, user_board):
     """
@@ -101,7 +128,7 @@ def display_game_board(guess_board, user_board):
     print()
     print("User Turn: ", user_turn)
     print("User Score: ", user_score)
-    print(Fore.MAGENTA + "Captain, use this to choose our target!\n")
+    print(Fore.MAGENTA + "Captain, use this board to choose our target!\n")
     print()
     print(" ", " ".join("ABCDE"))
     for letter, row in zip("12345", guess_board):
@@ -111,7 +138,7 @@ def display_game_board(guess_board, user_board):
     print()
     print("Comp Turn: ", comp_turn)
     print("Comp Score: ", comp_score)
-    print(Fore.BLUE + "Captain, our forces are ready to go!\n")
+    print(Fore.BLUE + "Captain, you can see our location on this board below!\n")
     print()
     print(" ", " ".join("ABCDE"))
     for letter, row in zip("12345", user_board):
@@ -212,8 +239,8 @@ def comp_guess(guess_board, user_board):
     print("The enemy has there sights on us!..\n")
     print()
     while True:
-        row = randint(0, 4)
-        col = randint(0, 4)
+        row = random.randint(0, 4)
+        col = random.randint(0, 4)
 
         if user_board[row][col] == "S":
             user_board[row][col] = "X"
