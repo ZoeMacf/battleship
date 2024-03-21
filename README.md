@@ -205,6 +205,20 @@ For example within the function for taking the user's row and column inputs a Va
 |  User Score Update | Should update when a ship has been hit  | Correctly guess a location | Score updated  | Pass |
 | Comp Score Update | Should update when a ship has been hit  | Computer correcly guessed a location  | Score updated | Pass  |
 
+### Wrong Inputs
+
+#### Game Menu
+
+![wrong-input-menu](./README-images/wrong_input_menu.PNG)
+
+#### Wrong Row
+
+![wrong-input-menu](./README-images/wrong_row.PNG)
+
+#### Wrong Column
+
+![wrong-input-menu](./README-images/wrong_col.PNG)
+
 ## Bugs
 
 ### Resolved Bugs
