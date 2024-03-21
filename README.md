@@ -61,32 +61,35 @@ At the beginning of the game the user will be presented with the logo for "Stars
  2. Display Rules
  3. Exit Game
 
- ![Start-Screen1](./README-images/startscreen1.PNG)
- ![Start-Screen2](./README-images/startscreen2.PNG)
+ ![Start-Screen1](./README-images/starship_main1.PNG)
+ ![Start-Screen2](./README-images/starship_main2.PNG)
 
 ### Display Rules
 
 If the user enters '2' as their choice the rules will be displayed. 
 
-![Game-Rules](./README-images/gamerules.PNG)
+![Game-Rules](./README-images/rules.PNG)
 
 ### Start Game
 
 If the user enters '1' as their choice the game will begin and both boards will be printed to the screen.
 
-![Begin-Game](./README-images/begingame.PNG)
+![Begin-Game](./README-images/begin_game1.PNG)
+![Begin-Game](./README-images/begin_game2.PNG)
 
 ### Choosing Row
 
 User is asked to enter a number from 1-5 for their choice of row.
 
-![Row-Choice](./README-images/enterrow.PNG)
+![Row-Choice](./README-images/choose_row.PNG)
 
 ### Choosing Column
 
 User is asked to enter a letter from A-E for their choice of row. The game will convert the letter an Int for validation and and check with computer's hidden ships.
 
-![Column-Choice](./README-images/entercol.PNG)
+![Column-Choice](./README-images/choose_col.PNG)
+
+After checking code with Pep8 this text is stuck with a large space, I tried to remedy this with Black linter for Python but it was not fixed. 
 
 ### Grids Updated
 
@@ -94,23 +97,32 @@ After the input from user has been taken and validated the grids for both the us
 
 In this instance both myself and the computer missed.
 
-![Grid-Update](./README-images/gridupdate.PNG)
+![Grid-Update](./README-images/grid_update.PNG)
+
+### Turn and Score Counter
+
+![Grid-Update](./README-images/turn_score_user.PNG)
+![Grid-Update](./README-images/turn_score_comp.PNG)
 
 ### User Wins
 
 User wins the game
 
-![User-Win](./README-images/winmessage.PNG)
+![User-Win](./README-images/user_win.PNG)
+
+#### Turn Count
+
+![User-Win](./README-images/user_win_turn.PNG)
 
 ### Computer Wins
 
+### Play Again
+
+Prompt for user to play again
+
+![User-Win](./README-images/play_again.PNG)
+
 #### Future Implementations
-
-In future I would like to add a turn count for the user and computer maybe as a difficulty option as you can keep guessing till the board is filled. 
-
-I would also like the option to display both scores and possibly a high score option using a Google Sheets. 
-
-I would like to look at adding more board sizes in line with adding further turns, try to make the game more difficult. 
 
 ## Technologies Used
 
