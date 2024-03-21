@@ -124,6 +124,10 @@ Prompt for user to play again
 
 #### Future Implementations
 
+In future implementations I would like to add difficulty options such as board sizes or a turn limiter. 
+
+I would like to add the option for the user to choose the colour for their board and the enemies board for more customistion. 
+
 ## Technologies Used
 
 ### Languages and Python Packages/Libraries Used
