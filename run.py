@@ -175,8 +175,8 @@ def user_guess(guess_board, user_board, comp_board):
                     Fore.RED
                     + Style.BRIGHT
                     + Style.BRIGHT
-                    + f"Invalid value {e}: Please lock\
-                in a row coordinate from 1-5\n"
+                    + f"Invalid value {e}: Please lock" 
+                        "in a row coordinate from 1-5\n"
                 )
                 continue
             else:
@@ -200,8 +200,8 @@ def user_guess(guess_board, user_board, comp_board):
                     Fore.RED
                     + Style.BRIGHT
                     + Style.BRIGHT
-                    + f"Invalid value {e}: Please lock in\
-                    a column coordinate from A-E\n"
+                    + f"Invalid value {e}: Please lock in "
+                      "a column coordinate from A-E\n"
                 )
                 continue
             else:
