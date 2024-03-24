@@ -95,7 +95,6 @@ If the user inputs a location that has previously been used the following is dis
 
 ![same-location](./README-images/same_input.PNG)
 
-After checking code with Pep8 this text is stuck with a large space, I tried to remedy this with Black linter for Python but it was not fixed. 
 
 ### Grids Updated
 
@@ -121,6 +120,7 @@ User wins the game
 ![User-Win](./README-images/user_win_turn.PNG)
 
 ### Computer Wins
+![Comp-Win](./README-images/comp_win.PNG)
 
 ### Play Again
 
