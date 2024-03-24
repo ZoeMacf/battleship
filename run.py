@@ -164,6 +164,7 @@ def user_guess(guess_board, user_board, comp_board):
     """
     global user_turn
     global user_score
+    global user_message
     while True:
         while True:
             try:
@@ -187,8 +188,7 @@ def user_guess(guess_board, user_board, comp_board):
                 col = (
                     letter_to_number[
                         input(
-                            "Please enter a column\
-                        letter from A-E\n"
+                            "Please enter a column letter from A-E\n"
                         ).upper()
                     ]
                     - 1
@@ -211,10 +211,7 @@ def user_guess(guess_board, user_board, comp_board):
             guess_board[row][col] = "X"
             user_turn += 1
             user_score += 1
-            print("")
-            print(Fore.CYAN + "Locking on...\n")
-            print("")
-            print(Fore.GREEN + Style.BRIGHT + "Hit!\n")
+            user_message = (Fore.GREEN + Style.BRIGHT + "Locking on...Hit!\n")
             print(Style.RESET_ALL)
             break
 
@@ -233,14 +230,12 @@ def user_guess(guess_board, user_board, comp_board):
         else:
             guess_board[row][col] = "/"
             user_turn += 1
-            print("")
-            print("Locking on...\n")
-            print("")
-            print(Fore.RED + Style.BRIGHT + "Miss!\n")
+            user_message = (Fore.RED + Style.BRIGHT + "Locking on...We missed!\n")
             break
             print(Style.RESET_ALL)
 
     display_game_board(guess_board, user_board)
+    print(user_message)
     if user_score < 5:
         comp_guess(GUESS_BOARD, USER_SHIPS)
 
@@ -256,7 +251,7 @@ def comp_guess(guess_board, user_board):
     global comp_score
 
     print("The enemy has there sights on us!..\n")
-    print("")
+    # print("")
     while True:
         row = random.randint(0, 4)
         col = random.randint(0, 4)
@@ -271,18 +266,17 @@ def comp_guess(guess_board, user_board):
             user_board[row][col] = "X"
             comp_score += 1
             comp_turn += 1
-            print("")
+            # print("")
             print(Fore.RED + Style.BRIGHT + "Woah, we've been hit!\n")
-            print("")
+            # print("")
             print(Style.RESET_ALL)
             break
 
         else:
             user_board[row][col] = "/"
-
-            print("")
+            # print("")
             print(Fore.GREEN + Style.BRIGHT + "Hah! They missed!\n")
-            print("")
+            # print("")
             print(Style.RESET_ALL)
             comp_turn += 1
             break
@@ -313,8 +307,8 @@ def play_game():
             print(
                 Fore.RED
                 + Style.BRIGHT
-                + "Well that didn't go as planned,\
-            back to training for you!\n"
+                + "Well that didn't go as planned,"
+                  "back to training for you!\n"
             )
             print("")
             print(f"The enemy beat you in {comp_turn} turns")
