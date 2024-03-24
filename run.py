@@ -261,7 +261,13 @@ def comp_guess(guess_board, user_board):
         row = random.randint(0, 4)
         col = random.randint(0, 4)
 
-        if user_board[row][col] == "S":
+        if user_board[row][col] == "X":
+            continue
+
+        elif user_board[row][col] == "/":
+            continue
+
+        elif user_board[row][col] == "S":
             user_board[row][col] = "X"
             comp_score += 1
             comp_turn += 1
@@ -270,6 +276,7 @@ def comp_guess(guess_board, user_board):
             print("")
             print(Style.RESET_ALL)
             break
+
         else:
             user_board[row][col] = "/"
 
