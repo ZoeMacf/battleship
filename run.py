@@ -219,14 +219,12 @@ def user_guess(guess_board, user_board, comp_board):
             break
 
         elif guess_board[row][col] == "X":
-            user_turn += 1
             print("")
             print(Fore.RED + Style.BRIGHT + "Hey rookie we fired there already!\n")
             print("")
             print(Style.RESET_ALL)
 
         elif guess_board[row][col] == "/":
-            user_turn += 1
             print("")
             print(Fore.RED + Style.BRIGHT + "Hey rookie we fired there already!\n")
             print("")
